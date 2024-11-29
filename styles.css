@@ -76,3 +76,23 @@ ul {
     list-style-type: square;
     margin: 1rem 0 0 1.5rem;
 }
+
+/* Inline CSS for List Styling */
+ol {
+    margin: 0;
+    padding-left: 1.5rem; /* Indentation for ordered list */
+}
+ol li {
+    margin-bottom: 1rem; /* Space between main topics */
+}
+ol li ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem; /* Indentation for subpoints */
+}
+ol li ul li {
+    margin-bottom: 0.3rem; /* Space between subpoints */
+}
+.topic-title {
+    font-weight: bold;
+    color: #0156a7; /* Matches your theme */
+}

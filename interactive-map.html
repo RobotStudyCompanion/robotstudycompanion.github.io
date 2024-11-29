@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - Robot Study Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        /* Add specific styling for the map */
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="rsc-logo.png" alt="RSC Logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="thesis-topics.html">Thesis Topics</a>
+            <a href="interactive-map.html">Interactive Map</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Interactive Deployment Map</h1>
+        <p>Explore locations where the Robot Study Companion (RSC) is deployed or has sparked interest.</p>
+        <div id="map"></div>
+    </div>
+
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20, 0], 2); // Centered on the world with zoom level 2
+
+        // Add a tile layer to the map (this is the map background)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add markers for the deployment locations
+        var locations = [
+            { name: "University of Tartu, Estonia", coords: [58.377625, 26.729006], type: "deployed" },
+            { name: "University of Wisconsin–Madison, USA", coords: [43.076592, -89.412487], type: "interested" },
+            { name: "University of Guyana, Guyana", coords: [6.801279, -58.155125], type: "deployed" },
+            { name: "Mondragon University, Spain", coords: [43.064689, -2.501667], type: "interested" },
+            { name: "Indraprastha Institute of Information Technology, Delhi, India", coords: [28.545, 77.273], type: "interested" },
+            { name: "Universitas PGRI Semarang, Indonesia", coords: [-6.966667, 110.416667], type: "interested" },
+            { name: "National Yunlin University of Science & Technology, Taiwan", coords: [23.69781, 120.960515], type: "interested" },
+            { name: "Nara Institute of Science & Technology, Japan", coords: [34.6913, 135.6917], type: "interested" }
+        ];
+
+        // Add custom icons for "deployed" and "interested"
+        var blueIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+        });
+
+        var orangeIcon = L.icon({
+            iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Orange_dot.png',
+            iconSize: [20, 20],
+            popupAnchor: [0, -10],
+        });
+
+        // Loop through the locations and add markers
+        locations.forEach(location => {
+            var icon = location.type === "deployed" ? blueIcon : orangeIcon;
+
+            L.marker(location.coords, { icon: icon })
+                .addTo(map)
+                .bindPopup(`<strong>${location.name}</strong><br>Type: ${location.type}`);
+        });
+    </script>
+</body>
+</html>

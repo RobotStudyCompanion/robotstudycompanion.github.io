@@ -62,9 +62,11 @@ a {
     color: #0156a7;
     text-decoration: none;
 }
+/*
 a:hover {
-    text-decoration: underline;
+    text-decoration: unerline;
 }
+*/
 .highlight {
     font-style: italic;
     color: #ff9E4A;

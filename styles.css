@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Nunito:wght@300;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    background-color: #ffffff;
+}
+header {
+    background-color: #0156a7;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+header img {
+    max-height: 50px;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff9E4A;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+h1, h2 {
+    color: #0156a7;
+    font-family: 'Nunito', sans-serif;
+}
+p, ul {
+    font-size: 1rem;
+    color: #000000;
+}
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+a {
+    color: #0156a7;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.highlight {
+    font-style: italic;
+    color: #ff9E4A;
+}
+
+ul {
+    list-style-type: square;
+    margin: 1rem 0 0 1.5rem;
+}

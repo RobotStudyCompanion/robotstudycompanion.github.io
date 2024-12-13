@@ -119,3 +119,31 @@ ol li ul li {
 .team a:hover {
     color: #ff9E4A; /* Hover highlight color */
 }
+
+/* Footer styles */
+footer {
+    background-color: #0156a7; /* Same as header */
+    color: white; /* White text */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+footer img {
+    max-height: 50px; /* Adjust logo size */
+}
+
+footer .counter {
+    text-align: right;
+}
+
+footer a {
+    color: white; /* Ensure links are visible in white */
+    text-decoration: none;
+    font-size: 0.8rem; /* Slightly smaller font for footer links */
+}
+
+footer a:hover {
+    color: #ff9E4A; /* Highlight link on hover */
+}

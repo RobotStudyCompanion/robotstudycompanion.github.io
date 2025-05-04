@@ -123,15 +123,31 @@ ol li ul li {
 /* Footer styles */
 footer {
     background-color: #0156a7; /* Same as header */
-    color: white; /* White text */
+    color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Center everything first */
     align-items: center;
     padding: 1rem 2rem;
+    gap: 2rem; /* Space between logos and text */
+    flex-wrap: wrap; /* So it doesn't break on small screens */
 }
 
-footer img {
-    max-height: 50px; /* Adjust logo size */
+/* Left: Logos */
+.footer-logos {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Logos inside footer */
+.footer-logos img {
+    max-height: 50px;
+}
+
+.footer-text {
+    text-align: center; /* Center: Text */
+    color: white;
+    flex: 1; /* Take the available space */
 }
 
 footer .counter {

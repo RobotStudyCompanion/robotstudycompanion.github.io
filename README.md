@@ -1,2 +1,5 @@
 # robotstudycompanion.github.io
-repo for RSC github page
+
+dedicated repo for the RSC github static info page
+
+

@@ -221,6 +221,25 @@ footer a:hover {
     color: #ff9E4A; /* Stay orange when expanded */
 }
 
+/* Contact Page */
+.team-member, .student-devs ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info, .team-section, .student-devs {
+  margin-bottom: 2rem;
+}
+
+.contact-info a, .team-section a {
+  color: #0156a7;
+  text-decoration: none;
+}
+
+.contact-info a:hover, .team-section a:hover {
+  color: #ff9E4A;
+}
+
+
 /* .talks-section p {
     font-family: 'Nunito', sans-serif;
     margin-top: 0.5rem;

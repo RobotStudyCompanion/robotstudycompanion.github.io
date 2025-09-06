@@ -32,6 +32,12 @@
             width: 100%;
             border-radius: 8px;
         }
+        .leaflet-control-attribution {
+            /* display: none !important; */
+            font-size: 10px;
+            opacity: 0.1;
+        }
+
     </style>
 </head>
 <body>
@@ -121,6 +127,7 @@
                 .addTo(map)
                 .bindPopup(`<strong>${loc.name}</strong><br>Type: ${loc.type.charAt(0).toUpperCase() + loc.type.slice(1)}`);
         });
+
 
     </script>
 

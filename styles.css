@@ -221,6 +221,14 @@ footer a:hover {
     color: #ff9E4A; /* Stay orange when expanded */
 }
 
+.talks-section details[open]::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ff9E4A;  /* the line */
+    margin-top: 0.1em;             /* space above the line */
+    padding-top: 0.1em;
+}
+
 /* Contact Page */
 .team-member, .student-devs ul li {
   margin-bottom: 0.5rem;

@@ -57,6 +57,40 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+      .assembly-slideshow {
+    position: relative;
+    text-align: center;
+  }
+
+  .assembly-step {
+    display: none;
+    margin-bottom: 2rem;
+  }
+
+  .assembly-step.active {
+    display: block;
+  }
+
+  .slideshow-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .slideshow-controls button {
+    padding: 0.6rem 1.2rem;
+    background-color: #0156a7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .slideshow-controls button:hover {
+    background-color: #ff9E4A;
+  }
   </style>
 </head>
 <body>
@@ -82,7 +116,8 @@
     <div id="v4" class="version-guide">
       <h3>Version: RSC v4</h3>
 
-      <div class="assembly-step">
+    <div class="assembly-slideshow">
+      <div class="assembly-step active">
         <h4>Step 01: Install the Speaker into the Speaker Base</h4>
         <p>Insert the speaker into the blue speaker base, aligning the mounting holes. Pass the speaker wires through the provided slot to avoid pinching. Secure the speaker to the base using SCREWS.</p>
         <img src="media/guide/v4/Step 1.gif" alt="Step 01 - Speaker into Base" class="portrait-gif">
@@ -92,7 +127,7 @@
       <div class="assembly-step">
         <h4>Step 02: Connect the Pi Bracket to the Speaker Base</h4>
         <p>Position the Pi bracket above the speaker base, aligning the mounting holes. Secure the bracket to the base using 4 × M3×8 screws. Ensure the speaker wires are routed neatly through the central opening for later connection to the electronics.</p>
-        <video class="portrait-gif" autoplay loop muted playsinline>
+        <video class="portrait-gif" controls playsinline>
           <source src="media/guide/v4/Step 2.mp4" type="video/mp4">
         </video>
       </div>
@@ -100,7 +135,7 @@
       <div class="assembly-step">
         <h4>Step 03: Attach the Raspberry Pi to the Bracket</h4>
         <p>Place the Raspberry Pi onto the Pi bracket, aligning the mounting holes. Secure it using SCREWS. Route the speaker wires neatly through the gap between the Pi bracket and the Raspberry Pi to prepare for later connection.</p>
-        <video class="portrait-gif" autoplay loop muted playsinline>
+        <video class="portrait-gif" controls playsinline>
           <source src="media/guide/v4/Step 3.mp4" type="video/mp4">
         </video>
       </div>
@@ -108,7 +143,7 @@
       <div class="assembly-step">
         <h4>Step 04: Attach the Voice Bonnet to the Expansion Board</h4>
         <p>Align the AIY Voice Bonnet with the Expansion board, ensuring the header pins are correctly positioned. Press them together firmly until fully seated. Verify that all pins are aligned and no components are bent before proceeding.</p>
-        <video class="portrait-gif" autoplay loop muted playsinline>
+        <video class="portrait-gif" controls playsinline>
           <source src="media/guide/v4/Step 4.mp4" type="video/mp4">
         </video>
       </div>
@@ -116,7 +151,7 @@
       <div class="assembly-step">
         <h4>Step 05: Connect the Voice Bonnet to the Raspberry Pi</h4>
         <p>Align the AIY Voice Bonnet (with the Expansion board attached) over the GPIO header pins of the Raspberry Pi 4. Press down gently but firmly until the bonnet is fully seated on the pins, ensuring proper alignment and no bent connectors.</p>
-        <video class="portrait-gif" autoplay loop muted playsinline>
+        <video class="portrait-gif" controls playsinline>
           <source src="media/guide/v4/Step 5.mp4" type="video/mp4">
         </video>
       </div>
@@ -124,10 +159,15 @@
       <div class="assembly-step">
         <h4>Step 06: Connect the Speaker Wires to the Voice Bonnet</h4>
         <p>Insert the speaker wires into the screw terminal on the AIY Voice Bonnet. Tighten both screws using a precision screwdriver to ensure a secure electrical connection. Confirm that the red wire is connected to the positive terminal and the black wire to the negative terminal.</p>
-        <video class="portrait-gif" autoplay loop muted playsinline>
+        <video class="portrait-gif" controls playsinline>
           <source src="media/guide/v4/Step 6.mp4" type="video/mp4">
         </video>
       </div>
+    </div>
+      <div class="slideshow-controls">
+    <button id="prevBtn">⬅️ Previous</button>
+    <button id="nextBtn">Next ➡️</button>
+    </div>
     </div>
 
     <div id="v4_1" class="version-guide" style="display: none;">
@@ -147,6 +187,29 @@
       document.querySelectorAll('.version-guide').forEach(div => div.style.display = 'none');
       document.getElementById(id).style.display = 'block';
     }
+
+  const steps = document.querySelectorAll('.assembly-step');
+  let currentStep = 0;
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle('active', i === index);
+    });
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentStep = (currentStep - 1 + steps.length) % steps.length;
+    showStep(currentStep);
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentStep = (currentStep + 1) % steps.length;
+    showStep(currentStep);
+  });
+
+  // Initialize
+  showStep(currentStep);
+
   </script>
 
 </body>

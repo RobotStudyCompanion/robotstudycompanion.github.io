@@ -58,7 +58,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-      .assembly-slideshow {
+    .assembly-slideshow {
     position: relative;
     text-align: center;
   }
@@ -91,6 +91,9 @@
   .slideshow-controls button:hover {
     background-color: #ff9E4A;
   }
+
+  /* For RSCv4.1 */
+
   </style>
 </head>
 <body>
@@ -277,16 +280,109 @@
       </div>
 
     </div>
-      <div class="slideshow-controls">
-    <button id="prevBtn">⬅️ Previous</button>
-    <button id="nextBtn">Next ➡️</button>
+    <div class="slideshow-controls">
+      <button id="prevBtn">⬅️ Previous</button>
+      <button id="nextBtn">Next ➡️</button>
     </div>
     </div>
 
-    <div id="v4_1" class="version-guide" style="display: none;">
+    <!-- <div id="v4_1" class="version-guide" style="display: none;">
       <h3>Version: RSC v4.1</h3>
       <p>🚧 Coming soon: RSC v4.1 assembly steps are under construction. Check back shortly for updates.</p>
+    </div> -->
+
+    <div id="v4_1" class="version-guide" style="display:none;">
+      <h3>Version: RSC v4.1</h3>
+
+      <div class="assembly-step active">
+        <h4>Step 01: Assemble the Speaker Unit</h4>
+        <p>
+          Insert the Speaker into the Speaker Case, aligning it with the inner support ring. Then, place the Speaker Lid on top and press gently until it snaps into place.
+          The lid is designed with a precision friction-fit grip, eliminating the need for screws while ensuring a secure hold.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 02: Mount the Pi Bracket onto the Speaker Unit</h4>
+        <p> 
+          Align the Pi Bracket with the upper section of the Speaker Unit, ensuring the speaker wires pass cleanly through the central opening. 
+          Gently rotate the Pi Bracket into position until it locks into the designed grooves. 
+          The Updated v4.1 design includes snap-fit joints, which remove the need for screws while providing a firm and vibration-resistant connection between the speaker base and the Pi Bracket.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 03: Mount the Raspberry Pi into the Pi Bracket</h4>
+        <p>
+           Place the Raspberry Pi 4 onto the Pi Bracket, aligning the mounting holes with the standoffs. Secure it using 4 × M2×6 screws.
+
+           Ensure that the GPIO header is positioned upward for later connection with the Expansion Board and AIY Voice Bonnet, and route the speaker wires neatly below the Pi to prevent obstruction.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 3.1: Check Pi Bracket</h4>
+        <p>
+           Ensure that the board is oriented so that the USB ports and microSD card slot align with their dedicated openings in the chassis.
+          This allows quick access for updates, maintenance, and storage expansion without reopening the assembly, a key improvement introduced in RSC v4.1.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 3_1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 04: Mount the AIY Voice Bonnet onto the Raspberry Pi</h4>
+        <p>
+          Align the AIY Voice Bonnet with the GPIO header of the Raspberry Pi 4 and gently press it down until it is fully seated.
+          Make sure all the pins are correctly aligned and inserted straight into the header to prevent bending or loose contact.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 05: Mount the RSC Expansion Board onto the AIY Voice Bonnet</h4>
+        <p>
+          Align the RSC Expansion Board with the pin headers on the AIY Voice Bonnet, ensuring all pins match their respective sockets. Gently press the board down until it sits evenly on top of the bonnet.
+          If the board doesn’t hold firmly in place, secure it with 1 × M2×6 screw at the mounting hole provided on the edge of the board. This will keep it stable and prevent loose contact during operation.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 5.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="assembly-step">
+        <h4>Step 06: Connect the Speaker Wires to the Voice Bonnet</h4>
+        <p>
+          Insert the Speaker wires (red and black) into the terminal block on the AIY Voice Bonnet. Ensure the red wire goes into the positive (+) terminal and the black wire into the negative (–) terminal.
+          Use a small screwdriver to gently tighten both screws, securing the wires firmly in place. Make sure there is no loose connection before continuing.
+        </p>
+        <video class="portrait-gif" autoplay muted controls playsinline>
+          <source src="media/guide/v4.1/Step 6.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+        <!-- Navigation buttons -->
+        <div class="slideshow-controls">
+          <button id="prevBtn_v41">⬅️ Previous</button>
+          <button id="nextBtn_v41">Next ➡️</button>
+        </div>
+      </div>
+
     </div>
+
+
   </section>
 
   <footer>
@@ -295,35 +391,63 @@
         </div>
     </footer>
 
-  <script>
-    function showVersion(id) {
-      document.querySelectorAll('.version-guide').forEach(div => div.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
+<script>
+function showVersion(id) {
+  document.querySelectorAll('.version-guide').forEach(div => div.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 
-  const steps = document.querySelectorAll('.assembly-step');
-  let currentStep = 0;
-
-  function showStep(index) {
-    steps.forEach((step, i) => {
-      step.classList.toggle('active', i === index);
-    });
+  // Reset slideshow step when switching versions
+  if (id === 'v4') {
+    currentStep = 0;
+    showStep(currentStep);
+  } else if (id === 'v4_1') {
+    currentStepV41 = 0;
+    showStepV41(currentStepV41);
   }
+}
 
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    currentStep = (currentStep - 1 + steps.length) % steps.length;
-    showStep(currentStep);
-  });
+/* --- v4 slideshow --- */
+const steps = document.querySelectorAll('#v4 .assembly-step');
+let currentStep = 0;
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    currentStep = (currentStep + 1) % steps.length;
-    showStep(currentStep);
-  });
+function showStep(index) {
+  steps.forEach((step, i) => step.classList.toggle('active', i === index));
+}
 
-  // Initialize
+document.getElementById('prevBtn').addEventListener('click', () => {
+  currentStep = (currentStep - 1 + steps.length) % steps.length;
   showStep(currentStep);
+});
 
-  </script>
+document.getElementById('nextBtn').addEventListener('click', () => {
+  currentStep = (currentStep + 1) % steps.length;
+  showStep(currentStep);
+});
+
+showStep(currentStep);
+
+/* --- v4.1 slideshow --- */
+const stepsV41 = document.querySelectorAll('#v4_1 .assembly-step');
+let currentStepV41 = 0;
+
+function showStepV41(index) {
+  stepsV41.forEach((step, i) => step.classList.toggle('active', i === index));
+}
+
+// Attach only if buttons exist
+document.getElementById('prevBtn_v41').addEventListener('click', () => {
+  currentStepV41 = (currentStepV41 - 1 + stepsV41.length) % stepsV41.length;
+  showStepV41(currentStepV41);
+});
+
+document.getElementById('nextBtn_v41').addEventListener('click', () => {
+  currentStepV41 = (currentStepV41 + 1) % stepsV41.length;
+  showStepV41(currentStepV41);
+});
+
+showStepV41(currentStepV41);
+</script>
+
 
 </body>
 </html>

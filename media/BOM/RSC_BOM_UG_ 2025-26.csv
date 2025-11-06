@@ -1,0 +1,60 @@
+Modality,Item,More Information,Count ,Cost per Unit $ ,Total Cost $,Checked,mouser.com,amazon.com
+brain,Raspberry Pi (RPi),"Pi 4, 8GB",3,75,225,TRUE,https://www.mouser.com/ProductDetail/Raspberry-Pi/SC01959?qs=T%252BzbugeAwjhNCW2QVhlotw%3D%3D&_gl=1*ndin2h*_ga*dW5kZWZpbmVk*_ga_15W4STQT4T*dW5kZWZpbmVk*_ga_1KQLCYKRX3*dW5kZWZpbmVk,
+,,"Pi 5, 8GB",1,80,80,TRUE,https://www.mouser.com/ProductDetail/Raspberry-Pi/SC1112?qs=HoCaDK9Nz5c86n0i5EQ%2FPA%3D%3D,
+,Heatsink Kit,for Pi 4,3,0.99,2.97,TRUE,https://www.mouser.com/ProductDetail/Seeed-Studio/110991327?qs=RcG8xmE7yp3Tarensb79KQ%3D%3D,
+,Active Cooler,for Pi 5,1,5,5,TRUE,https://www.mouser.com/ProductDetail/Raspberry-Pi/SC1148?qs=HoCaDK9Nz5fqo0izK2taew%3D%3D,
+,SenseCAP Watcher W1-A AI Agent,Clear Enclosure,1,70,70,TRUE,,https://www.amazon.com/SenseCAP-Watcher-Enclosure-Processor-Microphone/dp/B0F8TQ13KR/ref=sr_1_1?sr=8-1
+,RPi power supply,Pi 5 USB-C US Plug 27W,4,12,48,TRUE,https://www.mouser.com/ProductDetail/Raspberry-Pi/SC1158?qs=HoCaDK9Nz5cK620ydyaGmA%3D%3D,
+,SD Card,"micro SD card (64 GB) + adapter
+Memory card; Extreme Pro, 
+A2 Spec; microSDXC; R: 200MB/s",4,8.44,33.76,TRUE,https://www.mouser.com/ProductDetail/Raspberry-Pi/SC1629?qs=IKkN%2F947nfBrx9rREVJ71A%3D%3D,
+,SD Card Reader,USB for laptops w/o SD card reader,1,7,7,TRUE,https://www.mouser.com/ProductDetail/Seeed-Studio/112990066?qs=uwxL4vQweFNe5GsTruWNIg%3D%3D,
+display,Cheap Yellow Display,"resistive touch, CYD",3,30,90,TRUE,,https://www.amazon.com/ESP32-2432S028R-Dual-core-Display-ILI9341-240X320/dp/B0D9RKVCHB/ref=pd_ci_mcx_di_int_sccai_cn_d_sccl_1_17/136-2118434-7872364?psc=1
+audio,Adafruit Voice Bonnet,adafruit voice bonnet v2,1,24.5,24.5,TRUE,https://www.mouser.com/ProductDetail/Adafruit/4757?qs=hd1VzrDQEGhW9KybIMsAsg%3D%3D,
+,Respeaker (seeed studio),2 mic array,3,12.9,38.7,TRUE,https://www.mouser.com/ProductDetail/Seeed-Studio/107100001?qs=pfd5qewlna6HLrbantKShQ%3D%3D,
+,"Speaker 3"" 1W 8Ohm"," 3"" Diameter - 8 Ohm 1 Watt (0:01)",4,3,12,TRUE,https://www.mouser.com/ProductDetail/Adafruit/1313?qs=GURawfaeGuAzMAywWdxbMA%3D%3D,
+,USB Mini Mic Adafruit,"Adafruit Accessories Mini USB Mic
+",1,5.95,5.95,TRUE,https://www.mouser.com/ProductDetail/Adafruit/3367?qs=AQlKX63v8RscTvi0U3E4jQ%3D%3D,
+gestures,SG90 Servos,"2 per robot; continuous rotation, 360deg
+TowerPro SG90C 360 Degree 
+https://www.dfrobot.com/product-1579.html",8,4,32,TRUE,https://www.mouser.com/ProductDetail/DFRobot/SER0043?qs=5aG0NVq1C4zNL6r3%252B8mR2g%3D%3D,
+light,Adafruit NeoPixel Ring,-4500K (Natural White),4,11.95,47.8,TRUE,https://www.mouser.com/ProductDetail/Adafruit/2855?qs=E8JTJTJKghaSu1Gt5cN4OQ%3D%3D,
+touch,Arcade LED Button,"Adafruit Accessories Mini LED 
+Arcade Button - 24mm Translucent",4,2.5,10,TRUE,https://www.mouser.com/ProductDetail/Adafruit/3429?qs=5aG0NVq1C4wproJuXLeckg%3D%3D,
+sense,"XIAO MR60BHA2 
+60GHz mmWave","Human Breathing & Heartbeat Kit, 
+ESP32C6, Wi-Fi, BLE",1,24.99,24.99,TRUE,,https://www.amazon.com/MR60BHA2-Breathing-Heartbeat-Assistant-Compatible/dp/B0F3CCM5P6/ref=sr_1_1?s=books&sr=1-1
+,DFRobot human presence sensor,24GHz 12m mmWave,1,12.99,12.99,TRUE,https://www.mouser.com/ProductDetail/DFRobot/SEN0610?qs=HFfMDpzxxd0WbbIEdHkxfg%3D%3D ,
+,multi-sensor rpi kit,"SunFounder Raspberry Pi Pico W 
+Ultimate Starter Kit with Online Tutorials",1,69.99,69.99,TRUE,,https://www.amazon.com/SunFounder-Raspberry-Kit-MicroPython-Compatible/dp/B0BDFVL6FX/ref=pd_rhf_se_s_pd_sbs_rvi_d_sccl_2_3/137-2535416-5068815?psc=1 
+,SCD41,"Air Quality, True NDIR CO2 sensor",2,24.99,49.98,TRUE,,https://www.amazon.com/Accuracy-Detection-Temperature-Humidity-Interfaces/dp/B0FRSQSN4N/ref=sr_1_6?sr=8-6
+"tools & 
+peripherals","Level Shifter BiDirectional, 3V3 to 5V","Module: converter; 
+logic level shifter; 
+pin strips; 1.5÷18VDC",2,2.95,5.9,TRUE,"https://www.mouser.com/ProductDetail/Adafruit/5637?qs=mELouGlnn3eApJvk%252BZK%252BPQ%3D%3D 
+",
+,"Level Shifter BiDirectional, 3V3 to 5V","Module: converter; 
+logic level shifter; 
+pin strips; 1.5÷18VDC",2,3.5,7,TRUE,https://www.mouser.com/ProductDetail/Adafruit/1875?qs=GURawfaeGuDemPQhViAXHg%3D%3D,
+,Wires,"20-22 awg, stranded or solid core
+silicon insulated; red & black, 3m",1,19.99,19.99,TRUE,,https://www.amazon.com/Fermerry-Stranded-Silicone-Flexible-Electrical/dp/B089D29FHC/ref=sr_1_3?sr=8-3
+,Micro HDMI Male to HDMI Female,Adapter for Pi4 HDMI ports,3,2.9,8.7,TRUE,https://www.mouser.com/ProductDetail/Seeed-Studio/320210001?qs=SElPoaY2y5IpesjEUALrcQ%3D%3D,"alternative: 
+https://www.amazon.com/Cable-Matters-Micro-Adapter-Inches/dp/B00JDRHQ58/ref=sr_1_1?sr=8-1"
+,Mini Keyboard & Mouse,"easy to use, portable",1,15.99,15.99,TRUE,,https://www.amazon.com/Backlit-Wireless-Handheld-Keyboard-Raspberry/dp/B06X9J8NG4/ref=pd_bxgy_d_sccl_2/136-2118434-7872364?psc=1
+,Arcade buttons wire,"20 pcs; JST XH2.45 Male to 0.110 in
+for arcade buttons",1,9.99,9.99,TRUE,,https://www.amazon.com/Guwarry-Encoder-Terminals-Compatible-Seimitsu/dp/B07RRSG321/ref=sr_1_13?sr=8-13
+,Speakers Connectors to Adafruit,"JST & DUPONT kit
+for custom connectors
+e.g. speaker terminals to voice bonnet",1,33.99,33.99,TRUE,,"https://www.amazon.com/Crimping-2-54mm-JST-XH-Connectors-Connector/dp/B09DFM29FV/ref=sr_1_4?s=books&sr=1-4
+"
+,Desoldering Wick,three sizes...,1,4.99,4.99,TRUE,,https://www.amazon.com/JoTownCand-Premium-Desoldering-Residue-Solder/dp/B0DRN688Q5/ref=sr_1_1_sspa?sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1
+,Soldering kit,"Full solder station kit, tools, parts",1,42.99,42.99,TRUE,,https://www.amazon.com/YIHUA-Soldering-194%C2%BAF-896%C2%BAF-Adjustable-Calibration/dp/B082F1RKTM/ref=sr_1_1?s=books&sr=1-1
+,Filament Dryer,"maintain print quality, filament condition",1,79,79,TRUE,,http://amazon.com/Official-CREALITY-Filament-Heating-Dehydrator/dp/B0D22D1L46/ref=sr_1_2?sr=8-2
+,3D printer,Bambu Lab A1 Mini,1,199,199,TRUE,,https://www.amazon.com/Multi-Color-Precision-Full-Auto-Calibration-Compensation/dp/B0CRYJBKQQ?ref_=ast_sto_dp
+,TPU White,0.75kg,1,26.99,26.99,TRUE,,https://www.amazon.com/Polymaker-Filament-Flexible-1-75mm-Cardboard/dp/B09KLRH3V9/ref=sr_1_3?crid=3EPY17LYCNU28&dib=eyJ2IjoiMSJ9.kJ9Hbckw-ESHPFvAQqjz4XKa24g2Gve2q6kpAcpxq2Dm7JPCX4zlfPm0HY5xDyI5snrK8oVBQgwWMDWPS6VPKfYP48USrt3491FifbGtkyO0zKnUtbAbtNpWA0cx3QdxRRudENUU9XFLC0a-YGayYSuvTTsywhJDFudNE3LfuhGUBGcdK1JLDsoY_tFwg4z1UArZed_zQJ-Eilb2fFDbOwUYLhv5gB_c8l7T9vcRpIM._xusSSaqqQMGJ827HPsG6HLre3etPQjQuPLinB_4_tA&dib_tag=se&keywords=white%2Bpolyflex&qid=1761688477&sprefix=white%2Bpolyflex%2Caps%2C217&sr=8-3&th=1
+,PETG blue,"1kg; by creality ""digital blue""",1,17.99,17.99,TRUE,,https://www.amazon.com/Official-Creality-Precision-Toughness-Moistureproof/dp/B0D4Q1221L/ref=sr_1_3?s=industrial&sr=1-3
+,PETG White,1kg; by creality,1,15.99,15.99,TRUE,,https://www.amazon.com/Official-Creality-Precision-Toughness-Moistureproof/dp/B0C8NLPTQW/ref=sr_1_3?s=industrial&sr=1-3
+,PLA yellow,1kg; lemon yellow; polymaker,1,20.69,20.69,TRUE,,https://www.amazon.com/Polymaker-Filament-1-75mm-Azure-Printer/dp/B0B2NYXXHJ/ref=sr_1_3?th=1
+,,,,,,,,
+,,,,,1399.83,,,
+,,,,,SUM TOTAL,,,

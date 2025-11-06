@@ -445,31 +445,5 @@ document.getElementById('nextBtn_v41').addEventListener('click', () => {
 showStepV41(currentStepV41);
 </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('show_bom') === '1') {
-      const iframe = document.createElement('iframe');
-      iframe.src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-RBUiPjJ5C7Pt0Gp5y6LDJ4HoMD4AqQk7zW7dJqNln28Jp80hmsIGWe_n8_yByfDg2At5pLZMcZUU/pubhtml?widget=true&amp;headers=false";
-      iframe.style.width = '100%';
-      iframe.style.height = '800px';
-      iframe.style.border = 'none';
-      iframe.style.marginTop = '2rem';
-
-      const title = document.createElement('h3');
-      title.innerHTML = '📦 Bill of Materials (RSC v4, UG 2025–26)';
-      title.style.marginTop = '3rem';
-
-      const container = document.createElement('div');
-      container.id = 'bom-container';
-      container.appendChild(title);
-      container.appendChild(iframe);
-
-      document.body.appendChild(container);
-    }
-  });
-</script>
-
-
 </body>
 </html>

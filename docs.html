@@ -92,7 +92,11 @@
     background-color: #ff9E4A;
   }
 
-  /* For RSCv4.1 */
+  /* For BOM */
+  #bom-table-wrapper table {
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  }
 
   </style>
 </head>
@@ -286,8 +290,13 @@
     </div>
     </div>
 
-    <a href="media/BOM/RSC_V4_UG2025.csv" style="display:none;" id="rsc-bom-link">Download BOM</a>
-
+  <!-- BOM Display -->
+  <div id="bom-container" style="display: none;">
+    <h3>📦 Bill of Materials (RSC v4, UG 2025–26)</h3>
+    <div id="bom-table-wrapper">
+      Loading BOM...
+    </div>
+  </div>
 
     <!-- <div id="v4_1" class="version-guide" style="display: none;">
       <h3>Version: RSC v4.1</h3>
@@ -449,6 +458,62 @@ document.getElementById('nextBtn_v41').addEventListener('click', () => {
 });
 
 showStepV41(currentStepV41);
+</script>
+
+<!-- BOM Script -->
+<script>
+  // Utility: Parse CSV into array of rows
+  function parseCSV(text) {
+    const rows = text.trim().split('\n');
+    return rows.map(row => row.split(','));
+  }
+
+  // Utility: Convert CSV array into HTML table
+  function renderTable(data) {
+    const table = document.createElement('table');
+    table.style.borderCollapse = 'collapse';
+    table.style.width = '100%';
+    table.style.marginTop = '1rem';
+
+    data.forEach((row, index) => {
+      const tr = document.createElement('tr');
+      row.forEach(cell => {
+        const td = document.createElement(index === 0 ? 'th' : 'td');
+        td.textContent = cell;
+        td.style.border = '1px solid #ccc';
+        td.style.padding = '8px';
+        td.style.textAlign = 'left';
+        if (index === 0) td.style.backgroundColor = '#f0f0f0';
+        tr.appendChild(td);
+      });
+      table.appendChild(tr);
+    });
+
+    return table;
+  }
+
+  // Detect ?show_bom=1 and load the BOM CSV
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('show_bom') === '1') {
+      const container = document.getElementById('bom-container');
+      const wrapper = document.getElementById('bom-table-wrapper');
+
+      fetch('media/BOM/RSC_V4_UG2025.csv')
+        .then(res => res.text())
+        .then(csv => {
+          const parsed = parseCSV(csv);
+          wrapper.innerHTML = '';  // Clear "Loading BOM..."
+          wrapper.appendChild(renderTable(parsed));
+        })
+        .catch(err => {
+          wrapper.innerHTML = '⚠️ Failed to load BOM.';
+          console.error('CSV load error:', err);
+        });
+
+      container.style.display = 'block'; // Show the hidden BOM section
+    }
+  });
 </script>
 
 

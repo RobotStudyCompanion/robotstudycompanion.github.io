@@ -91,13 +91,6 @@
   .slideshow-controls button:hover {
     background-color: #ff9E4A;
   }
-
-  /* For BOM */
-  #bom-table-wrapper table {
-  font-family: Arial, sans-serif;
-  font-size: 0.95rem;
-  }
-
   </style>
 </head>
 <body>
@@ -290,14 +283,6 @@
     </div>
     </div>
 
-  <!-- BOM Display -->
-  <div id="bom-container" style="display: none;">
-    <h3>📦 Bill of Materials (RSC v4, UG 2025–26)</h3>
-    <div id="bom-table-wrapper">
-      Loading BOM...
-    </div>
-  </div>
-
     <!-- <div id="v4_1" class="version-guide" style="display: none;">
       <h3>Version: RSC v4.1</h3>
       <p>🚧 Coming soon: RSC v4.1 assembly steps are under construction. Check back shortly for updates.</p>
@@ -399,7 +384,7 @@
 
   <footer>
         <div class="footer-text" style="color: white;">
-            <p>This Guide was created by Ali Badshah, [work-in-progress as of October 2025] </p>
+            <p>Guide Videos & Text by Ali Badshah, [work-in-progress as of October 2025] </p>
         </div>
     </footer>
 
@@ -460,55 +445,27 @@ document.getElementById('nextBtn_v41').addEventListener('click', () => {
 showStepV41(currentStepV41);
 </script>
 
-<!-- BOM Script -->
-<!-- Load PapaParse -->
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('show_bom') === '1') {
-      fetch('media/BOM/RSC_V4_UG2025.csv')
-        .then(response => response.text())
-        .then(csvText => {
-          const parsed = Papa.parse(csvText.trim(), { header: false });
-          const rows = parsed.data;
+      const iframe = document.createElement('iframe');
+      iframe.src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-RBUiPjJ5C7Pt0Gp5y6LDJ4HoMD4AqQk7zW7dJqNln28Jp80hmsIGWe_n8_yByfDg2At5pLZMcZUU/pubhtml?widget=true&amp;headers=false";
+      iframe.style.width = '100%';
+      iframe.style.height = '800px';
+      iframe.style.border = 'none';
+      iframe.style.marginTop = '2rem';
 
-          const table = document.createElement('table');
-          table.style.width = '100%';
-          table.style.borderCollapse = 'collapse';
-          table.style.marginTop = '2rem';
+      const title = document.createElement('h3');
+      title.innerHTML = '📦 Bill of Materials (RSC v4, UG 2025–26)';
+      title.style.marginTop = '3rem';
 
-          rows.forEach((row, i) => {
-            const tr = document.createElement('tr');
-            row.forEach(cell => {
-              const cellElement = document.createElement(i === 0 ? 'th' : 'td');
-              cellElement.textContent = cell;
-              cellElement.style.border = '1px solid #ccc';
-              cellElement.style.padding = '8px';
-              if (i === 0) {
-                cellElement.style.backgroundColor = '#0156a7';
-                cellElement.style.color = 'white';
-              }
-              tr.appendChild(cellElement);
-            });
-            table.appendChild(tr);
-          });
+      const container = document.createElement('div');
+      container.id = 'bom-container';
+      container.appendChild(title);
+      container.appendChild(iframe);
 
-          const title = document.createElement('h3');
-          title.innerHTML = '📦 Bill of Materials (RSC v4, UG 2025–26)';
-
-          const container = document.createElement('div');
-          container.id = 'bom-container';
-          container.style.overflowX = 'auto';
-          container.appendChild(title);
-          container.appendChild(table);
-
-          document.body.appendChild(container);
-        })
-        .catch(error => {
-          console.error('Failed to load BOM:', error);
-        });
+      document.body.appendChild(container);
     }
   });
 </script>

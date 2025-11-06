@@ -515,6 +515,57 @@ showStepV41(currentStepV41);
     }
   });
 </script>
+<!-- Load PapaParse -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('show_bom') === '1') {
+      fetch('media/BOM/RSC_V4_UG2025.csv')
+        .then(response => response.text())
+        .then(csvText => {
+          const parsed = Papa.parse(csvText.trim(), { header: false });
+          const rows = parsed.data;
+
+          const table = document.createElement('table');
+          table.style.width = '100%';
+          table.style.borderCollapse = 'collapse';
+          table.style.marginTop = '2rem';
+
+          rows.forEach((row, i) => {
+            const tr = document.createElement('tr');
+            row.forEach(cell => {
+              const cellElement = document.createElement(i === 0 ? 'th' : 'td');
+              cellElement.textContent = cell;
+              cellElement.style.border = '1px solid #ccc';
+              cellElement.style.padding = '8px';
+              if (i === 0) {
+                cellElement.style.backgroundColor = '#0156a7';
+                cellElement.style.color = 'white';
+              }
+              tr.appendChild(cellElement);
+            });
+            table.appendChild(tr);
+          });
+
+          const title = document.createElement('h3');
+          title.innerHTML = '📦 Bill of Materials (RSC v4, UG 2025–26)';
+
+          const container = document.createElement('div');
+          container.id = 'bom-container';
+          container.style.overflowX = 'auto';
+          container.appendChild(title);
+          container.appendChild(table);
+
+          document.body.appendChild(container);
+        })
+        .catch(error => {
+          console.error('Failed to load BOM:', error);
+        });
+    }
+  });
+</script>
 
 
 </body>

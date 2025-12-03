@@ -59,38 +59,60 @@
     }
 
     .assembly-slideshow {
-    position: relative;
-    text-align: center;
-  }
+      position: relative;
+      text-align: center;
+    }
 
-  .assembly-step {
-    display: none;
-    margin-bottom: 2rem;
-  }
+    .assembly-step {
+      display: none;
+      margin-bottom: 2rem;
+    }
 
-  .assembly-step.active {
-    display: block;
-  }
+    .assembly-step.active {
+      display: block;
+    }
 
-  .slideshow-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
+    /* Number text styling */
+    .step-number {
+      font-size: 1.2rem;
+      color: #0156a7;
+      /*margin-bottom: 1rem;*/
+      margin: 0;               
+      line-height: 40px;
+    }
 
-  .slideshow-controls button {
-    padding: 0.6rem 1.2rem;
-    background-color: #0156a7;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    .step-number span {
+      font-weight: bold;
+    }
 
-  .slideshow-controls button:hover {
-    background-color: #ff9E4A;
-  }
+    /* Circular buttons for previous and next */
+    .circle-button {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #0156a7;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .circle-button:hover {
+      background-color: #ff9E4A;
+    }
+
+    /* Updated slideshow-controls styling */
+    .slideshow-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -122,8 +144,6 @@
         <p>Insert the speaker into the blue speaker base, aligning the mounting holes. 
           Pass the speaker wires through the provided slot to avoid pinching. 
           Secure the speaker to the base using SCREWS.</p>
-        <!-- <img src="media/guide/v4/Step 1.gif" alt="Step 01 - Speaker into Base" class="portrait-gif"> -->
-        <!-- <source src="media/guide/v4/Step 1.gif"> -->
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 1.mp4" type="video/mp4">
         </video>
@@ -275,11 +295,16 @@
           <source src="media/guide/v4/Step 15.mp4" type="video/mp4">
         </video>
       </div>
+      </div>
 
-    </div>
-    <div class="slideshow-controls">
-      <button id="prevBtn">⬅️ Previous</button>
-      <button id="nextBtn">Next ➡️</button>
+      <!-- Number text and circular buttons for v4 -->
+      <div class="slideshow-controls">
+        <button class="circle-button" id="prevBtn"> < </button>
+        <div id="stepNumberV4" class="step-number">
+          Step <span id="currentStepV4">1</span> / <span id="totalStepsV4">15</span>
+        </div>
+        <button class="circle-button" id="nextBtn"> > </button>
+      </div>
     </div>
     </div>
 
@@ -369,16 +394,16 @@
           <source src="media/guide/v4.1/Step 6.mp4" type="video/mp4">
         </video>
       </div>
-      
-        <!-- Navigation buttons -->
-        <div class="slideshow-controls">
-          <button id="prevBtn_v41">⬅️ Previous</button>
-          <button id="nextBtn_v41">Next ➡️</button>
+
+      <!-- Number text and circular buttons for v4.1 -->
+      <div class="slideshow-controls">
+        <button class="circle-button" id="prevBtn_v41"> < </button>
+        <div id="stepNumberV41" class="step-number">
+          Step <span id="currentStepV41">1</span> / <span id="totalStepsV41">6</span>
         </div>
+        <button class="circle-button" id="nextBtn_v41"> > </button>
       </div>
-
     </div>
-
 
   </section>
 
@@ -393,7 +418,6 @@ function showVersion(id) {
   document.querySelectorAll('.version-guide').forEach(div => div.style.display = 'none');
   document.getElementById(id).style.display = 'block';
 
-  // Reset slideshow step when switching versions
   if (id === 'v4') {
     currentStep = 0;
     showStep(currentStep);
@@ -403,46 +427,75 @@ function showVersion(id) {
   }
 }
 
-/* --- v4 slideshow --- */
+/* ------------------
+      V4 SLIDESHOW
+------------------ */
 const steps = document.querySelectorAll('#v4 .assembly-step');
 let currentStep = 0;
 
 function showStep(index) {
   steps.forEach((step, i) => step.classList.toggle('active', i === index));
+
+  // Update number text
+  document.getElementById('currentStepV4').textContent = index + 1;
+  document.getElementById('totalStepsV4').textContent = steps.length;
+
+  // Enable/disable arrows
+  document.getElementById('prevBtn').style.visibility = index === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').style.visibility = index === steps.length - 1 ? 'hidden' : 'visible';
 }
 
 document.getElementById('prevBtn').addEventListener('click', () => {
-  currentStep = (currentStep - 1 + steps.length) % steps.length;
-  showStep(currentStep);
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
 });
 
 document.getElementById('nextBtn').addEventListener('click', () => {
-  currentStep = (currentStep + 1) % steps.length;
-  showStep(currentStep);
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
 });
 
 showStep(currentStep);
 
-/* --- v4.1 slideshow --- */
+
+/* ------------------
+     V4.1 SLIDESHOW
+------------------ */
 const stepsV41 = document.querySelectorAll('#v4_1 .assembly-step');
 let currentStepV41 = 0;
 
 function showStepV41(index) {
   stepsV41.forEach((step, i) => step.classList.toggle('active', i === index));
+
+  // Update number text
+  document.getElementById('currentStepV41').textContent = index + 1;
+  document.getElementById('totalStepsV41').textContent = stepsV41.length;
+
+  // Enable/disable arrows
+  document.getElementById('prevBtn_v41').style.visibility = index === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn_v41').style.visibility = index === stepsV41.length - 1 ? 'hidden' : 'visible';
 }
 
-// Attach only if buttons exist
 document.getElementById('prevBtn_v41').addEventListener('click', () => {
-  currentStepV41 = (currentStepV41 - 1 + stepsV41.length) % stepsV41.length;
-  showStepV41(currentStepV41);
+  if (currentStepV41 > 0) {
+    currentStepV41--;
+    showStepV41(currentStepV41);
+  }
 });
 
 document.getElementById('nextBtn_v41').addEventListener('click', () => {
-  currentStepV41 = (currentStepV41 + 1) % stepsV41.length;
-  showStepV41(currentStepV41);
+  if (currentStepV41 < stepsV41.length - 1) {
+    currentStepV41++;
+    showStepV41(currentStepV41);
+  }
 });
 
 showStepV41(currentStepV41);
+
 </script>
 
 </body>

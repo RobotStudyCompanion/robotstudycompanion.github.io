@@ -24,7 +24,8 @@
 <body>
     <header>
         <img src="rsc-logo.png" alt="RSC Logo">
-        <nav>
+        <!-- Desktop nav (unchanged) -->
+        <nav class="nav-desktop">
             <a href="index.html">Home</a>
             <a href="research.html">Research</a>
             <a href="thesis-topics.html">Thesis Topics</a>
@@ -32,7 +33,21 @@
             <a href="docs.html">Docs</a>
             <a href="contact.html">Team</a>
         </nav>
+        <!-- Mobile burger -->
+        <button class="burger" id="burgerBtn" aria-label="Menu">
+            ☰
+        </button>
     </header>
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="thesis-topics.html">Thesis Topics</a>
+        <a href="map.html">Map</a>
+        <a href="docs.html">Docs</a>
+        <a href="contact.html">Team</a>
+    </div>
     <!-- <div class="container">
         <h2>Contact Us</h2>
         <p>If you have any questions or want to collaborate, feel free to reach out!</p>
@@ -115,6 +130,25 @@
     </section>
     </main>
 
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
 
+        burgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>

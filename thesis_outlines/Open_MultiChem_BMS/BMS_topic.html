@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--used cmd to convert from .md: $ pandoc ./thesis_outlines/Open_MultiChem_BMS/BMS_topic.md -o ./thesis_outlines/Open_MultiChem_BMS/BMS_topic.html --standalone --css=styles.css-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BMS_topic</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<h1
+id="open-source-multi-chemistry-bms-for-tiny-social-robots-bscmsc">Open-Source
+Multi-Chemistry BMS for Tiny Social Robots (BSc/MSc)</h1>
+<ul>
+<li>Survey emerging sodium-ion battery technology and BMS requirements
+for small-form-factor devices.</li>
+<li>Design and implement an open-source, multi-chemistry Battery
+Management System supporting Na-ion, LiFePO4, and Li-ion 18650
+cells.</li>
+<li>Integrate with RSC v5 carrier board and evaluate thermal/safety
+characteristics.</li>
+<li>Target OSHWA certification and publish reference design for the
+maker/robotics community.</li>
+</ul>
+<hr />
+<h2 id="extended-description">Extended Description</h2>
+<h3 id="background">Background</h3>
+<p>The RSC project requires a reliable, safe, and affordable battery
+solution. Sodium-ion technology offers compelling safety benefits (no
+thermal runaway, 0V storage capability) and sustainability advantages,
+but lacks mature BMS solutions for small devices. This thesis addresses
+that gap.</p>
+<h3 id="tentative-research-questions">Tentative Research Questions</h3>
+<ol type="1">
+<li>What are the technical requirements for a BMS supporting multiple
+18650 chemistries (Na-ion, LiFePO4, Li-ion)?</li>
+<li>How might open-source BMS designs (e.g., Libre Solar BMS-C1) be
+adapted for compact 3-4S applications?</li>
+<li>What firmware modifications are needed to support Na-ion’s unique
+voltage curves and thresholds?</li>
+<li>How does Na-ion perform in a real social robot application (thermal
+behavior, runtime, cycle life)?</li>
+</ol>
+<h3 id="deliverables">Deliverables</h3>
+<ol type="1">
+<li><strong>Literature Review:</strong> Na-ion technology
+state-of-the-art, BMS IC landscape, open-source BMS projects</li>
+<li><strong>Hardware Design:</strong> KiCad schematic and PCB for 3S1P
+multi-chemistry BMS
+<ul>
+<li>BQ76942 AFE integration</li>
+<li>USB-C PD input compatibility</li>
+<li>I2C interface for host MCU telemetry</li>
+<li>JLCPCB PCBA-ready design</li>
+</ul></li>
+<li><strong>Firmware:</strong> (Zephyr RTOS-based firmware) with
+configurable (auto-detect?) chemistry profiles</li>
+<li><strong>Evaluation:</strong> Bench test characterisation and
+integration with RSC prototype</li>
+<li><strong>Documentation:</strong> OSHWA-ready documentation, build
+guide, and contribution to RSC open-source repository</li>
+</ol>
+<h3 id="skills-developed">Skills Developed</h3>
+<ul>
+<li>PCB design (KiCad)</li>
+<li>Embedded systems (Zephyr RTOS, I2C bus)</li>
+<li>Battery chemistry fundamentals</li>
+<li>Open-source hardware practices</li>
+<li>Technical documentation</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Basic electronics knowledge</li>
+<li>Familiarity with KiCad or willingness to learn</li>
+<li>Interest in sustainable technology</li>
+</ul>
+<h3 id="supervision">Supervision</h3>
+<ul>
+<li>Primary: Farnaz Baksh</li>
+<li>Technical: Matevž Zorec (and/or External)</li>
+</ul>
+<h3 id="possible-timeline">Possible Timeline</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Duration</th>
+<th>Activities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>4 weeks</td>
+<td>Literature review, BMS IC selection</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6 weeks</td>
+<td>Schematic design, component sourcing</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>4 weeks</td>
+<td>PCB layout, PCBA order</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>4 weeks</td>
+<td>Firmware development</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>4 weeks</td>
+<td>Testing, RSC integration</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>4 weeks</td>
+<td>Documentation, thesis writing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="related-rsc-topics">Related RSC Topics</h3>
+<ul>
+<li>RSC Gets a HAT (carrier board integration)</li>
+<li>IoT Gateway (power management for always-on operation)</li>
+</ul>
+<h3 id="external-collaboration-potential">External Collaboration
+Potential</h3>
+<ul>
+<li><strong>Libre Solar / EnAccess:</strong> Upstream contribution to
+BMS-C1 project</li>
+<li><strong>OSHWA:</strong> Certification process documentation</li>
+<li><strong>Na-ion community:</strong> First open-source small-device
+BMS reference</li>
+</ul>
+<hr />
+<h2 id="keywords">Keywords</h2>
+<p><code>sodium-ion</code> <code>BMS</code>
+<code>open-source hardware</code> <code>KiCad</code>
+<code>BQ76942</code> <code>OSHWA</code> <code>18650</code>
+<code>multi-chemistry</code> <code>Zephyr RTOS</code>
+<code>social robotics</code></p>
+<hr />
+<h1 id="appendix">Appendix</h1>
+<hr />
+<h2 id="notes-on-rsc-na-ion-bms-investigation-summary">Notes on RSC
+Na-Ion BMS Investigation Summary</h2>
+<p><strong>Date:</strong> January 2026<br />
+<strong>Context:</strong> RSC v5 power subsystem design<br />
+<strong>Status:</strong> Research / Thesis Topic Candidate</p>
+<hr />
+<h2 id="key-question">Key Question</h2>
+<p>Should RSC v5 adopt sodium-ion 18650 cells instead of traditional
+Li-ion?</p>
+<h2 id="na-ion-tradeoffs">Na-Ion Tradeoffs</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Na-Ion</th>
+<th>Li-Ion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Energy Density</td>
+<td>~100-160 Wh/kg</td>
+<td>~250 Wh/kg</td>
+</tr>
+<tr class="even">
+<td>Safety</td>
+<td>No thermal runaway, can discharge to 0V</td>
+<td>Fire/explosion risk</td>
+</tr>
+<tr class="odd">
+<td>Cost Trend</td>
+<td>Dropping fast (~$59/kWh in 2025)</td>
+<td>~$52/kWh (LFP)</td>
+</tr>
+<tr class="even">
+<td>Cycle Life</td>
+<td>3,000-10,000+ cycles</td>
+<td>500-2,000 cycles</td>
+</tr>
+<tr class="odd">
+<td>Cold Performance</td>
+<td>Excellent (-30°C @ 92% capacity)</td>
+<td>Poor below 0°C</td>
+</tr>
+<tr class="even">
+<td>Voltage Range</td>
+<td>1.5V - 4.1V (wider swing)</td>
+<td>2.5V - 4.2V</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rsc-v5-power-constraints">RSC v5 Power Constraints</h2>
+<ul>
+<li><strong>Target:</strong> 4-8 hrs standby/idle</li>
+<li><strong>Form factor:</strong> Max 3x 18650 cells (compact desktop
+companion)</li>
+<li><strong>Peak draw:</strong> 5-9A (CM5 + peripherals under load)</li>
+<li><strong>Input:</strong> USB-C PD @ 20V</li>
+</ul>
+<h2 id="the-problem">The Problem</h2>
+<p>Typical Na-ion 18650 specs (e.g., HAKADI 1500mAh): - Standard
+discharge: 0.5C (0.75A) - Max continuous: 3C (4.5A) - Max peak: 5C
+(~7.5A)</p>
+<p><strong>3S1P = 4.5A continuous</strong> → insufficient for 5-9A peak
+demand<br />
+<strong>3S2P = 9A continuous</strong> → requires 6 cells (exceeds form
+factor!)</p>
+<h2 id="bms-challenge">BMS Challenge</h2>
+<p>No dedicated Na-ion BMS ICs exist. Current solutions: 1.
+<strong>Configurable ICs</strong> (TI BQ76952/BQ76942) - programmable
+thresholds 2. <strong>Smart Chinese BMS boards</strong> (JK BMS:
+1.2V-4.35V range) 3. <strong>Discrete protection circuits</strong> - for
+simple low-power applications</p>
+<h2 id="open-source-bms-landscape">Open Source BMS Landscape</h2>
+<table>
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Project</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Libre Solar BMS-C1</strong></td>
+<td>BQ76952 + ESP32-C3, KiCad, CERN OHL v2, 16S/100A</td>
+</tr>
+<tr class="even">
+<td><strong>ENNOID-BMS</strong></td>
+<td>LTC68XX + STM32, modular, EV-scale</td>
+</tr>
+<tr class="odd">
+<td><strong>diyBMSv4</strong></td>
+<td>Per-cell modules, JLCPCB-friendly</td>
+</tr>
+<tr class="even">
+<td><strong>Green-BMS</strong></td>
+<td>OSHWA certified (IT000007)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gap identified:</strong> No open-source Na-ion BMS for small
+devices (3S-4S, &lt;10A).</p>
+<h2 id="proposed-contribution">Proposed Contribution</h2>
+<p><strong>RSC Na-Ion BMS Mini</strong> - multi-chemistry open-source
+BMS: - 3S-4S support (Na-ion, LiFePO4, Li-ion configurable) - 10A
+continuous / 15A peak - BQ76942 AFE + microcontroller - USB-C PD
+integration (align with RSC carrier board) - I2C telemetry to CM4/CM5 -
+JLCPCB PCBA compatible - OSHWA certification target</p>
+<h2 id="practical-paths-for-rsc-v5">Practical Paths for RSC v5</h2>
+<ol type="1">
+<li><strong>Accept limitation:</strong> 3S1P Na-ion, limit to 4-5A, rely
+on USB-C PD for heavy loads</li>
+<li><strong>Larger pack:</strong> 3S2P (6 cells) with slightly larger
+enclosure</li>
+<li><strong>Wait for 21700 Na-ion:</strong> Higher capacity cells
+emerging</li>
+<li><strong>Pragmatic hybrid:</strong> LiFePO4 now, design BMS for
+multi-chemistry future-proofing</li>
+</ol>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li>Libre Solar BMS-C1: https://github.com/LibreSolar/bms-c1</li>
+<li>HAKADI Na-ion cells: hakadibattery.com</li>
+<li>TI BQ76942 datasheet: ti.com/product/BQ76942</li>
+<li>CATL Naxtra (2025): 175 Wh/kg, 5C charging, 10,000+ cycles</li>
+</ul>
+</body>
+</html>

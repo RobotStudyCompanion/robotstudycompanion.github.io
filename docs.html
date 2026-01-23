@@ -155,160 +155,227 @@
 
     <div class="assembly-slideshow">
       <div class="assembly-step active">
-        <h4>Step 01: Install the Speaker into the Speaker Base</h4>
-        <p>Insert the speaker into the blue speaker base, aligning the mounting holes.
-          Pass the speaker wires through the provided slot to avoid pinching.
-          Secure the speaker to the base using SCREWS.</p>
+        <h4>Step 01: Welcome to the RSC v4 Assembly Guide!</h4>
+        <p>Please familiarise yourself with the components in the overview below:</p>
+        <img class="portrait-gif" src="media/guide/rsc_v4.png" alt="RSC v4 Parts Overview">
+        <p>This guide will walk you through each step of assembling the RSC v4.</p>
+        <p>Use the navigation buttons below to move through each of the assembly steps.</p>
+      </div>
+
+      <div class="assembly-step active">
+        <h4>Step 02: Assembling the Base</h4>
+        <ol>
+          <li>Carefully place the loudspeaker in the base and rotate it to align with the mounting holes.</li>
+          <li>Make sure to route the speaker wire through the round top slot.</li>
+          <li>Position the base trim cover over the loudspeaker.</li>
+          <li>Align the parts then secure the subassembly with four M3x8mm fasteners.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 1.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you will have assembled the base of the RSC v4.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 02: Connect the Pi Bracket to the Speaker Base</h4>
-        <p>Position the Pi bracket above the speaker base, aligning the mounting holes. Secure the bracket to the base using 4 × M3×8 screws. Ensure the speaker wires are routed neatly through the central opening for later connection to the electronics.</p>
+        <h4>Step 03: Connect the Pi Bracket to the Speaker Base</h4>
+        <ol>
+          <li>Position the main chassis (Pi bracket) on the speaker base.</li>
+          <li>Align the bracket and base with the mounting holes.</li>
+          <li>Secure the bracket to the base with four M3x8mm fasteners.</li>
+        </ol>
+        <p>Make sure to carefully route the speaker wires through the round slot.</p>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 2.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you will have attached the Pi bracket to the base.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 03: Attach the Raspberry Pi to the Bracket</h4>
-        <p>Place the Raspberry Pi onto the Pi bracket, aligning the mounting holes. Secure it using SCREWS. Route the speaker wires neatly through the gap between the Pi bracket and the Raspberry Pi to prepare for later connection.</p>
+        <h4>Step 04: Attach the Raspberry Pi to the Bracket</h4>
+        <p>Prepare and insert your AIY flashed SD card to its slot on the Raspberry Pi</p>
+        <p>We recommend Raspberry Pi Imager (v1.7 or later) and enabling SSH and VNC for remote access.</p>
+        <ol>
+          <li>Align your Raspberry Pi with the mounting holes in the Pi bracket.</li>
+          <li>Route the speaker wires through the gap between the Pi bracket and the Raspberry Pi.</li>
+          <li>Use four M2.5x6mm fasteners to secure the Raspberry Pi to the Pi bracket.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 3.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you have installed the Raspberry Pi in the RSC v4.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 04: Attach the Voice Bonnet to the Expansion Board</h4>
-        <p>Align the AIY Voice Bonnet with the Expansion board, ensuring the header pins are correctly positioned.
-          Press them together firmly until fully seated. Verify that all pins are aligned and no components are bent before proceeding.</p>
+        <h4>Step 05: Connect the Expansion Board to the AIY Voice Bonnet (v2) HAT</h4>
+        <p>Align the Voice Bonnet HAT with your Expansion Board by matching connector orientation.</p>
+        <p>Gently press both together until fully seated.</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 4.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you have installed the Expansion Board to the Voice Bonnet HAT.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 05: Connect the Voice Bonnet to the Raspberry Pi</h4>
-        <p>Align the AIY Voice Bonnet (with the Expansion board attached) over the GPIO header pins of the Raspberry Pi 4.
-          Press down gently but firmly until the bonnet is fully seated on the pins, ensuring proper alignment and no bent connectors.</p>
+        <h4>Step 06: Install the Voice Bonnet HAT on the Raspberry Pi</h4>
+        <ol>
+          <li>Carefully align your Voice Bonnet HAT over the Raspberry Pi GPIO headers.</li>
+          <li>Press gently to install the HAT on the header pins.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 5.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, the Voice Bonnet HAT is on the Raspberry Pi.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 06: Connect the Speaker Wires to the Voice Bonnet</h4>
-        <p>Insert the speaker wires into the screw terminal on the AIY Voice Bonnet.
-          Tighten both screws using a precision screwdriver to ensure a secure electrical connection.
-          Confirm that the red wire is connected to the positive terminal and the black wire to the negative terminal.</p>
+        <h4>Step 07: Connecting the Speaker Wires</h4>
+        <p>You will need a precision screwdriver for this step.</p>
+        <ol>
+          <li>Carefully plug your speaker wires into the screw terminal connector on the Voice Bonnet HAT.</li>
+          <li>Tighten the embedded fasteners to secure both speaker wires.</li>
+        </ol>
+        <p>Make sure to keep the speaker wires from connecting to each other.</p>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 6.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you have connected your speaker to the Voice Bonnet HAT.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 07: Connect the Expansion Board to the Voice Bonnet</h4>
-        <p>Use jumper to connect the RSC Expansion Board to the AIY Voice Bonnet.
-        Match the pins carefully as follows:
-        3.3V to 3.3V
-        PWM to PWM
-        TX to RXD
-        RX to TXD
-        </p>
+        <h4>Step 08: Wiring the Expansion Board</h4>
+        <p>Use jumper wires to connect Expansion Board's Level Shifter for peripheral communication.</p>
+        <ol>
+          <li>Connect Raspberry Pi 3.3V GPIO to Expansion Board 3.3V connector.</li>
+          <li>Connect Raspberry Pi PWM GPIO to Expansion Board PWM connector.</li>
+          <li>Connect Voice Bonnet HAT TX and RX to Expansion Board TX and RX connectors.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 7.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you wired up your Expansion Board Level Shifter.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 08: Install the Servos into the Main Chassis</h4>
-        <p>Insert the servo motors into the designated slots inside the main chassis.
-        Ensure that the servo shafts are oriented correctly for attaching the flippers later.
-        </p>
+        <h4>Step 09: Inserting the Servo Motors</h4>
+        <ol>
+          <li>Insert the servo horn to the flipper horn socket.</li>
+          <li>Push the flipper with the servo horn onto the servo motor shaft.</li>
+          <li>Secure the flipper and horn to the motor shaft with the provided shaft fastener screw</li>
+          <li>Repeat for second flipper then gently push each motor to their slot in the Pi bracket.</li>
+        </ol>
+        <p>The motors should slide in the slot with some resistance, depending on the printed part tolerance.</p>
+        <p>See video below for more details:</p>        
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 8.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you installed both flippers.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 09: Connect the Servos to the Expansion Board</h4>
-        <p>Take the servo cables and connect them to the servo header pins on the Expansion Board.
-        Connect the Left Servo to PWM0
-        Connect the Right Servo to PWM1
-        Make sure the brown wire (GND) is aligned with the GND pin.
-        </p>
+        <h4>Step 10: Plugging the Motors in the Expansion Board</h4>
+        <p>Connect the motors to the three pin PWM header pins on the Expansion Board.</p> 
+        <p>Make sure the ground (GND; black/brown wire) aligns with the GND pin on the header.</p>
+        <p>See video below for more details:</p>        
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 9.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you have installed both flippers of your RSC v4.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 10: Connect the Touch Display to the Expansion Board</h4>
-        <p>Take the Touch Display module and plug its connector cable into the UART header pins on the Expansion Board.
-        Ensure the cable is firmly seated and the orientation matches the pin labels (5V, TX, RX, GND).
-        </p>
+        <h4>Step 11: Connecting the Display to the Expansion Board</h4>
+        <ol>
+          <li>Plug the Display UART connector wires to their header on the Touch Display.</li>
+          <li>Plug the Display UART to the UART 5V header pins of the Level Shifter on the Expansion Board.</li>
+          <li>Make sure the connecter is firmly seated and the orientation matches the pin labels: 5V, TX, RX, GND.</li>
+        </ol>
+        <p>See video below for more details:</p>        
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 10.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you connected the display.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 11: Fit the Touch Display into the Front Panel</h4>
-        <p>Insert the Touch Display into the Front Panel frame, making sure the screen is flush with the opening.
-        Secure the display in place using the designated screw holes at each corner.
-        Ensure the connector cable remains accessible at the back for routing into the chassis.
-        </p>
+        <h4>Step 12: Fasten the Display to the Front Panel</h4>
+        <ol>
+          <li>Insert the Touch Display into the Front Panel frame, facing the opening slot.</li>
+          <li>Carefully fasten the Display to the frame using four M3x4mm screws, one for each corner.</li>
+        </ol>
+        <p>Ensure the connector cable remains accessible at the back for routing into the chassis.</p>
+        <p>Make sure the Display is flush with the frame opening.</p>
+        <p>See video below for more details:</p>                
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 11.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you fastened your display to the front panel.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 12: Install the Front Panel with Touch Display into the Chassis</h4>
-        <p>Carefully position the Front Panel (with the Touch Display already fitted) onto the main chassis.
-        Align the side clips and press gently until the panel snaps into place.
-        Make sure the display sits flush with the chassis opening and the connector cable is not pinched.
-        </p>
+        <h4>Step 13: Fit the Front Panel</h4>
+        <ol>
+          <li>Hold your Front Panel by the Raspberry Pi GPIO header and align it with the channel grooves in the Pi bracket.</li>
+          <li>Gently push your Front Panel down the channel grooves.</li>
+        </ol> 
+        <p>Make sure the Front Panel is flush with the Pi bracket with no pinched wires.</p>
+        <p>See video below for more details:</p>                
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 12.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you installed the face of your RSC v4.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 13: Assemble the Lid with Button and NeoPixel Ring</h4>
-        <p>Insert the Arcade Button through the hole in the Lid from the top side.
-        Place the NeoPixel Ring around the button on the underside of the Lid.
-        Secure the button in place using the Button Spacer/Holder, making sure the NeoPixel Ring is held firmly between the spacer and the Lid.
-        Route the button wires and NeoPixel wires neatly so they remain accessible for connection to the Expansion Board.
-        </p>
+        <h4>Step 14: Assemble the Lid with Button and NeoPixel Ring</h4>
+        <!-- insert AIY image for button wiring -->
+        <ol>
+          <li>Push the Arcade button in the Lid opening.</li>
+          <li>Route the NeoPixel connector wires through the Button Nut.</li>
+          <li>Sit the NeoPixel LED ring around the Arcade Button shaft, on the shelf under the Lid, facing down.</li>
+          <li>Fasten the button and NeoPixel ring in place gently using the Button Nut.</li>
+          <li>Route the button wires and NeoPixel wires neatly so they remain accessible for connection to the Expansion Board.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 13.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you assembled the lid.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 14: Connect the NeoPixel Ring and Arcade Button</h4>
-        <p>Connect the NeoPixel Ring wires (5V, GND, Signal) to the Expansion Board at the NeoPixel header pins.
-        Connect the Arcade Button wires to the AIY Voice Bonnet at the button input pins.
-        Ensure all connections are secure and wires are routed neatly inside the chassis to prevent interference with the lid closing.
-        </p>
+        <h4>Step 15: Connect the NeoPixels and Button</h4>
+        <!-- insert AIY image for button header install orientation -->
+        <ol>
+          <li>Connect the NeoPixel LED Ring wires (5V, GND, PWM signal) to its header pins on the Expansion Board.</li>
+          <li>Connect the Arcade Button wires to the AIY Voice Bonnet button header.</li>
+        </ol>
+        <p>Note: Make sure to secure all connections and route wires carefully inside the chassis to help reduce interference when closing the lid.</p>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 14.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you connected the lid.</p>
       </div>
 
       <div class="assembly-step">
-        <h4>Step 15: Install the Rear Panel and Lid</h4>
-        <p>Place the Rear Panel onto the back of the chassis, aligning the cutouts with the Raspberry Pi ports. Press gently until it snaps into place.
-        Carefully tuck the remaining wires inside the chassis, ensuring nothing is pinched.
-        Lower the Lid assembly (with the Button and NeoPixel Ring already mounted) onto the top of the chassis.
-        Press down until the Lid fits securely, completing the enclosure of the RSC.
-        </p>
+        <h4>Step 16: Install the Rear panel and Lid</h4>
+        <ol>
+          <li>Align the Rear panel with the channel grooves at the back of the Pi bracket.</li>
+          <li>Gently push your Rear panel down the channel grooves until flush with the Pi bracket.</li>
+          <li>Carefully tidy all wires in the chassis to prevent pinching or interference when closing the Lid.</li>
+          <li>Align the Lid on the Pi bracket and gently press down until flush with the Pi bracket.</li>
+        </ol>
+        <p>See video below for more details:</p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4/Step 15.mp4" type="video/mp4">
         </video>
+        <p>By the end of this step, you have fully assembled your RSC v4 😊🎉</p>
       </div>
       </div>
 
@@ -347,7 +414,7 @@
         <p>
           Align the Pi Bracket with the upper section of the Speaker Unit, ensuring the speaker wires pass cleanly through the central opening.
           Gently rotate the Pi Bracket into position until it locks into the designed grooves.
-          The Updated v4.1 design includes snap-fit joints, which remove the need for screws while providing a firm and vibration-resistant connection between the speaker base and the Pi Bracket.
+          <!-- The Updated v4.1 design includes snap-fit joints, which remove the need for screws while providing a firm and vibration-resistant connection between the speaker base and the Pi Bracket. -->
         </p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4.1/Step 2.mp4" type="video/mp4">
@@ -358,8 +425,7 @@
         <h4>Step 03: Mount the Raspberry Pi into the Pi Bracket</h4>
         <p>
            Place the Raspberry Pi 4 onto the Pi Bracket, aligning the mounting holes with the standoffs. Secure it using 4 × M2×6 screws.
-
-           Ensure that the GPIO header is positioned upward for later connection with the Expansion Board and AIY Voice Bonnet, and route the speaker wires neatly below the Pi to prevent obstruction.
+           <!-- Ensure that the GPIO header is positioned upward for later connection with the Expansion Board and AIY Voice Bonnet, and route the speaker wires neatly below the Pi to prevent obstruction. -->
         </p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4.1/Step 3.mp4" type="video/mp4">
@@ -370,7 +436,7 @@
         <h4>Step 3.1: Check Pi Bracket</h4>
         <p>
           Ensure that the board is oriented so that the USB ports and microSD card slot align with their dedicated openings in the chassis.
-          This allows quick access for updates, maintenance, and storage expansion without reopening the assembly, a key improvement introduced in RSC v4.1.
+          <!-- This allows quick access for updates, maintenance, and storage expansion without reopening the assembly, a key improvement introduced in RSC v4.1. -->
         </p>
         <video class="portrait-gif" autoplay muted controls playsinline>
           <source src="media/guide/v4.1/Step 3_1.mp4" type="video/mp4">

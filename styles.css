@@ -337,3 +337,167 @@ footer a:hover {
 .poster-section img.poster-thumbnail:hover {
     transform: scale(1.02);
 } */
+
+/* === RSC Highlights Section === */
+
+.rsc-highlights {
+  margin-top: 3rem;
+}
+
+.section-title {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.4rem;
+}
+
+/* Cards */
+/* .highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+} */
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.highlight-card {
+  padding: 1rem;
+}
+
+
+.highlight-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.highlight-card.wide {
+  display: flex;
+  flex-direction: column;   /* key change */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.highlight-card .icon {
+  font-size: 2.2rem;
+}
+
+.highlight-card h4 {
+  margin: 0.5rem 0;
+  color: #0156a7;
+}
+
+.highlight-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.highlight-card a {
+  display: inline-block;
+  margin-top: 0.6rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0156a7;
+}
+
+.highlight-card a:hover {
+  color: #ff9E4A;
+}
+
+/* Mobile refinement */
+@media (max-width: 600px) {
+  .highlight-card.wide {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.top-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* video bigger, cert smaller */
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .top-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.top-cards .highlight-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.highlight-card .icon img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* .highlight-card .icon {
+  margin-bottom: 0.5rem;
+} */
+
+.highlight-card.link a::after {
+  content: " ↗";
+  font-size: 0.9rem;
+}
+
+.highlight-card.link {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.highlight-card.link:hover {
+  transform: translateY(-3px);
+}
+
+.oshwa-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.oshwa-card img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.oshwa-card h4 {
+  margin-bottom: 0.4rem;
+}
+
+.oshwa-card a {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.oshwa-card:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}
+/* 
+.oshwa-card {
+  border: 2px solid #0156a7;
+} */
+
+.oshwa-card {
+  background: #f9fbff;
+}

@@ -451,18 +451,28 @@ footer a:hover {
   margin-bottom: 0.5rem;
 } */
 
-.highlight-card.link a::after {
-  content: " ↗";
-  font-size: 0.9rem;
+.highlight-card.link:hover {
+  transform: translateY(-3px);
 }
 
 .highlight-card.link {
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .highlight-card.link:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.highlight-card.link::after {
+  content: "↗";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 0.9rem;
+  opacity: 0.6;
 }
 
 .oshwa-card {
@@ -500,4 +510,11 @@ footer a:hover {
 
 .oshwa-card {
   background: #f9fbff;
+}
+
+/* summer school */
+.container hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid #eee;
 }

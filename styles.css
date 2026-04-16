@@ -466,14 +466,15 @@ footer a:hover {
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
+/*
 .highlight-card.link::after {
   content: "↗";
-  position: absolute;
+  position: relative;
   top: 10px;
   right: 12px;
   font-size: 0.9rem;
   opacity: 0.6;
-}
+} */
 
 .oshwa-card {
   display: flex;
@@ -517,4 +518,56 @@ footer a:hover {
     margin: 2rem 0;
     border: none;
     border-top: 1px solid #eee;
+}
+
+/* Collab runner slideshow */
+.logo-section {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.logo-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo-track {
+  display: flex;
+  gap: 3rem;
+  transition: transform 0.4s ease;
+}
+
+.logo-track img {
+  height: 60px;
+  opacity: 0.7;
+  filter: grayscale(40%);
+  transition: 0.3s;
+}
+
+.logo-track img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* arrows */
+.logo-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #0156a7;
+  padding: 0 10px;
+}
+
+.logo-btn:hover {
+  color: #ff9E4A;
+}
+
+@media (max-width: 600px) {
+  .logo-track img {
+    height: 45px;
+  }
 }

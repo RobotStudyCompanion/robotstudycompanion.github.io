@@ -347,6 +347,8 @@ footer a:hover {
 .section-title {
   margin: 2.5rem 0 1rem;
   font-size: 1.4rem;
+  /* text-align: center; */
+
 }
 
 /* Cards */
@@ -466,15 +468,17 @@ footer a:hover {
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
-/*
-.highlight-card.link::after {
-  content: "↗";
-  position: relative;
-  top: 10px;
-  right: 12px;
+.article-quote {
   font-size: 0.9rem;
-  opacity: 0.6;
-} */
+  font-style: italic;
+  color: #555;
+  margin-top: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.highlight-card.link:hover .article-quote {
+  color: #ff9E4A;
+}
 
 .oshwa-card {
   display: flex;
@@ -570,4 +574,12 @@ footer a:hover {
   .logo-track img {
     height: 45px;
   }
+}
+
+.highlight-card.link {
+  background-color: #f9fbff;   /* light blue */
+  /* border: 1px solid #cfe4ff; */
+}
+.highlight-card.link:hover {
+  background-color: #dceeff;
 }

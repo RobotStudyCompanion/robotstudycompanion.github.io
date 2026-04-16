@@ -313,37 +313,27 @@
 </script>
 
 <script>
-    const track = document.querySelector('.logo-track');
-    const logos = document.querySelectorAll('.logo-track img');
+    const carousel = document.querySelector('.logo-carousel');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
 
-    let index = 0;
-    const step = 150; // logo width + gap
+    const scrollAmount = 200; // how much to move each click
 
-    // how many logos fit in view
-    const visibleItems = Math.floor(document.querySelector('.logo-carousel').offsetWidth / step);
-
-    function updateSlider() {
-    track.style.transform = `translateX(-${index * step}px)`;
+    nextBtn.addEventListener('click', () => {
+    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' }); // 🔁 reset
+    } else {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
+    });
 
-    // NEXT
-    document.querySelector('.next').onclick = () => {
-    index++;
-    if (index > logos.length - visibleItems) {
-        index = 0; // reset properly
+    prevBtn.addEventListener('click', () => {
+    if (carousel.scrollLeft <= 0) {
+        carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' }); // 🔁 jump to end
+    } else {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     }
-    updateSlider();
-    };
-
-    // PREV
-    document.querySelector('.prev').onclick = () => {
-    index--;
-    if (index < 0) {
-        index = logos.length - visibleItems;
-    }
-    updateSlider();
-    };
+    });
 </script>
-
 
 </html>

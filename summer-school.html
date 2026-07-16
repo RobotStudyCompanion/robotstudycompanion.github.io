@@ -83,7 +83,6 @@
     <ul>
         <li><strong>Dates:</strong> 27 July – 7 August 2026</li>
         <li><strong>Location:</strong> University of Tartu, Delta Centre (Narva mnt 18, Tartu)</li>
-        <li><strong>Fee:</strong> 650 EUR</li>
         <li><strong>Credits:</strong> 3 ECTS (Pass/Fail)</li>
         <li><strong>Language:</strong> English</li>
         <li><strong>Level:</strong> Bachelor's, Master's, and PhD students</li>
@@ -179,40 +178,36 @@
 
     </div>
 
-    <!-- <h1>🤖 RSC Summer School</h1>
-    <p>Designing Social Robots for Human Interaction</p>
-    <p>Tartu, Estonia • July–August 2026</p>
 
-    <a href="https://ut.ee/en/content/designing-social-robots-human-interaction" target="_blank">
-    Apply via University of Tartu →
-    </a>
-
-    <p>
-    This summer school introduces students to human-robot interaction (HRI) through hands-on design, prototyping, and experimentation using real robotic systems — including the Robot Study Companion (RSC).
-    </p>
-
-    <ul>
-        <li>🤖 Design and build social robots</li>
-        <li>🧠 Learn HRI & interaction design</li>
-        <li>🛠️ Prototype with real hardware</li>
-        <li>👥 Work in teams on real-world challenges</li>
-        <li>🎤 Present your robot + research</li>
-    </ul>
-
-    <h3>Powered by the Robot Study Companion</h3>
-        <p>
-        Participants will work with the open-source RSC platform, exploring multimodal interaction, embodiment, and educational robotics.
-        </p>
-
-
-    <h3>📸 Coming Soon</h3>
+    <!-- <h3>📸 Coming Soon</h3>
     <p>
     During the summer school, this page will be updated with:
     - student projects
     - photos & videos
     - final prototypes
     - open-source contributions
-    </p> -->
+    </p>  -->
 
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        burgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>

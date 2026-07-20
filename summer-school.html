@@ -7,13 +7,12 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-XBX47MQ0SS');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robot Study Companion (RSC)</title>
+    <title>Designing Social Robots for HI | RSC Summer School 2026</title>
     <link rel="stylesheet" href="styles.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
@@ -21,11 +20,229 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">    
 
+    <style>
+        /* Layout & Header Styling matching sketch */
+        .breadcrumbs {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .breadcrumbs a {
+            color: #0156a7;
+            text-decoration: none;
+        }
+
+        .course-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .course-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .course-header h2 {
+            font-size: 1.25rem;
+            color: #555;
+            font-weight: 400;
+            margin-top: 0;
+        }
+
+        /* Date & Location Badges */
+        .info-badges {
+            display: flex;
+            gap: 15px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .badge-card {
+            background: #f0f4f8;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 10px 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* UBISS Style Sub-Navigation Tabs */
+        .sub-nav-tabs {
+            display: flex;
+            border-bottom: 2px solid #0156a7;
+            background-color: #f8f9fa;
+            border-radius: 6px 6px 0 0;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            border-bottom: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0156a7;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .tab-btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        .tab-btn.active {
+            background-color: #0156a7;
+            color: #ffffff;
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* Tab Content Box */
+        .tab-content-container {
+            border: 1px solid #d0d7de;
+            border-top: none;
+            padding: 24px;
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            min-height: 300px;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .iframe-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+        }
+
+        /* --- TAB 5: PROJECTS & GALLERY STYLING --- */
+        /* Section Headings */
+        .gallery-section-title {
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        /* Individual Project Card */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            padding: 16px;
+            text-decoration: none;
+            color: #1e293b;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #0156a7;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Project Card Header (Title) */
+        .project-card-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #0156a7;
+            margin: 0 0 12px 0;
+        }
+
+        /* Project Card Image Container */
+        .project-card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            margin-bottom: 12px;
+        }
+
+        /* Project Card Author Footer */
+        .project-card-footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px dashed #f1f5f9;
+        }
+
+        .project-author-name {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #0f172a;
+        }
+
+        .project-author-affil {
+            display: block;
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* Photo Gallery Grid */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 1.5rem;
+        }
+
+        .photo-item {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            height: 180px;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.04);
+        }
+    </style>
 </head>
 <body>
     <header>
         <img src="rsc-logo.png" alt="RSC Logo">
-        <!-- Desktop nav (unchanged) -->
+        <!-- Desktop nav -->
         <nav class="nav-desktop">
             <a href="index.html">Home</a>
             <a href="research.html">Research</a>
@@ -35,10 +252,9 @@
             <a href="contact.html">Team</a>
         </nav>
         <!-- Mobile burger -->
-        <button class="burger" id="burgerBtn" aria-label="Menu">
-            ☰
-        </button>
+        <button class="burger" id="burgerBtn" aria-label="Menu">☰</button>
     </header>
+
     <!-- Mobile overlay menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-menu" id="closeMenu">✕</button>
@@ -51,163 +267,242 @@
     </div>
 
     <div class="container">
+        <!-- Breadcrumb trail like UBISS -->
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a> / RSC Summer School 2026
+        </div>
 
-    <h2>🤖 RSC Summer School 2026</h2>
-    <p class="highlight">
-        Designing Social Robots for Human Interaction
-    </p>
+        <!-- Header Section -->
+        <div class="course-header">
+            <h1>🤖 Designing Social Robots for Human Interaction</h1>
+            <h2>The intersection of humans and robots has become increasingly critical as society integrates robotics into everyday life. 
+                This course offers an in-depth exploration of social robotics, a branch of robotics that involves the design, development, 
+                and study of robots that interact and communicate with humans or other robots in a socially meaningful manner. 
+                Participants will investigate concepts such as robot design for social interaction, ethical considerations, and 
+                real-world applications using various robot platforms as hands-on case studies.</h2>
+        </div>
 
-    <p>
-        The intersection of humans and robots has become increasingly critical as society integrates robotics into everyday life. 
-        This course offers an in-depth exploration of social robotics, focusing on the design, development, and study of robots 
-        that interact and communicate in socially meaningful ways.
-    </p>
+        <!-- Date & Location Badges (From your sketch) -->
+        <div class="info-badges">
+            <div class="badge-card">
+                📅 <span><strong>Date:</strong> 27 July – 7 August 2026</span>
+            </div>
+            <div class="badge-card">
+                📍 <span><strong>Location:</strong> Delta Centre, Tartu</span>
+            </div>
+        </div>
 
-    <p>
-        Participants will explore robot design, ethical considerations, and real-world applications through hands-on experience 
-        with robotic platforms, including the Robot Study Companion (RSC).
-    </p>
+        <!-- Sub-navigation Tabs (From your sketch & UBISS style) -->
+        <nav class="sub-nav-tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'course-detail')">Course Detail</button>
+            <button class="tab-btn" onclick="openTab(event, 'schedule')">Schedule</button>
+            <button class="tab-btn" onclick="openTab(event, 'speakers')">Speakers</button>
+            <button class="tab-btn" onclick="openTab(event, 'instructors-sponsors')">Instructors & Sponsors</button>
+            <button class="tab-btn" onclick="openTab(event, 'projects-gallery')">Projects & Gallery</button>
+        </nav>
 
-    <p><strong>📅 Applications open until 20 April</strong></p>
+        <!-- Content Container -->
+        <div class="tab-content-container">
 
-    <p>
-        <a href="https://ut.ee/en/content/designing-social-robots-human-interaction" target="_blank">
-            Apply via University of Tartu →
-        </a>
-    </p>
+            <!-- TAB 1: Course Detail -->
+            <div id="course-detail" class="tab-pane active">
+                <h3>🧠 Course Overview</h3>
+                <p>
+                    The intersection of humans and robots has become increasingly critical as society integrates robotics into everyday life. 
+                    This course offers an in-depth exploration of social robotics, focusing on the design, development, and study of robots 
+                    that interact and communicate in socially meaningful ways.
+                </p>
 
-    <hr>
+                <!-- <p><strong>📅 Applications open until 20 April</strong></p>
+                <p>
+                    <a href="https://ut.ee/en/content/designing-social-robots-human-interaction" target="_blank">
+                        Apply via University of Tartu →
+                    </a>
+                </p> -->
 
-    <!-- General Info -->
-    <h3>📌 General Information</h3>
-    <ul>
-        <li><strong>Dates:</strong> 27 July – 7 August 2026</li>
-        <li><strong>Location:</strong> University of Tartu, Delta Centre (Narva mnt 18, Tartu)</li>
-        <li><strong>Credits:</strong> 3 ECTS (Pass/Fail)</li>
-        <li><strong>Language:</strong> English</li>
-        <li><strong>Level:</strong> Bachelor's, Master's, and PhD students</li>
-        <li><strong>Field:</strong> Robotics, Artificial Intelligence</li>
-    </ul>
+                <hr>
 
-    <hr>
+                <h3>📌 General Information</h3>
+                <ul>
+                    <li><strong>Credits:</strong> 3 ECTS (Pass/Fail)</li>
+                    <li><strong>Language:</strong> English</li>
+                    <li><strong>Level:</strong> Bachelor's, Master's, and PhD students</li>
+                    <li><strong>Field:</strong> Robotics, Artificial Intelligence</li>
+                </ul>
 
-    <!-- Description -->
-    <h3>🧠 Course Overview</h3>
-    <p>
-        This course introduces foundational principles of human-robot interaction (HRI), with a focus on social robotics in education. 
-        Through lectures, workshops, and group work, students will:
-    </p>
+                <hr>
 
-    <ul>
-        <li>Design and develop social robots</li>
-        <li>Evaluate and improve robots’ social capabilities</li>
-        <li>Apply design and research methods in HRI</li>
-        <li>Engage in hands-on programming and prototyping</li>
-        <li>Contribute to an academic publication</li>
-    </ul>
+                <h3>🧩 Requirements</h3>
+                <ul>
+                    <li>Basic programming skills (Python, Git, Bash, etc.)</li>
+                    <li>Familiarity with robotics concepts (recommended)</li>
+                    <li>Interest in AI, robotics, and interdisciplinary applications</li>
+                </ul>
 
-    <p>
-        The course combines theory with practical, multidisciplinary approaches, exploring the societal impact of robotics and AI.
-    </p>
+                <hr>
 
-    <hr>
+                <h3>🎯 Learning Outcomes</h3>
+                <ul>
+                    <li>Understand key concepts in human-robot interaction</li>
+                    <li>Design and evaluate socially interactive robots</li>
+                    <li>Program and customise robotic systems</li>
+                    <li>Apply AI, MLOps, and IoT concepts</li>
+                    <li>Assess ethical and societal implications</li>
+                    <li>Develop and present a working robot prototype</li>
+                </ul>
+            </div>
 
-    <!-- Lecturers -->
-    <h3>👩‍🏫 Teaching Team</h3>
+            <!-- TAB 2: Schedule -->
+            <div id="schedule" class="tab-pane">
+                <h3>📅 Course Schedule</h3>
+                <p><em>Note: This schedule updates in real-time as changes are made.</em></p>
 
-    <p><strong>Farnaz Baksh</strong><br>
-    Junior Research Fellow, University of Tartu<br>
-    Leads development of the open-source Robot Study Companion for multimodal human-robot interaction.</p>
+                <!-- Google Sheet Embed -->
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1vbOTNKaa-ZHbTdnspJSTSTpOD8Bna8tSapUpJJZjlH8/edit?usp=sharing" 
+                        width="100%" 
+                        height="650" 
+                        style="border: 1px solid #d0d7de; border-radius: 6px;"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
 
-    <p><strong>Matevž Borjan Zorec</strong><br>
-    Junior Research Fellow, University of Tartu<br>
-    Works on IoT, AI, and robotics systems; co-developer of the RSC platform.</p>
+            <!-- TAB 3: Speakers -->
+            <div id="speakers" class="tab-pane">
+                <h3>🎙️ Keynote & Guest Speakers</h3>
+                <p>Information on guest speakers and keynotes will be announced soon.</p>
+            </div>
 
-    <p><strong>Karl Kruusamäe</strong><br>
-    Professor of Human-Centred Robotics, University of Tartu<br>
-    Research focuses on human-robot collaboration and educational robotics.</p>
+            <!-- TAB 4: Instructors & Sponsors -->
+            <div id="instructors-sponsors" class="tab-pane">
+                <h3>👩‍🏫 Your Instructors</h3>
 
-    <hr>
+                <p><strong>Farnaz Baksh</strong><br>
+                Junior Research Fellow, University of Tartu<br>
+                Leads development of the open-source Robot Study Companion for multimodal human-robot interaction.</p>
 
-    <!-- Requirements -->
-    <h3>🧩 Requirements</h3>
-    <ul>
-        <li>Basic programming skills (Python, Git, Bash, etc.)</li>
-        <li>Familiarity with robotics concepts (recommended)</li>
-        <li>Interest in AI, robotics, and interdisciplinary applications</li>
-    </ul>
+                <p><strong>Matevž Borjan Zorec</strong><br>
+                Junior Research Fellow, University of Tartu<br>
+                Works on IoT, AI, and robotics systems; co-developer of the RSC platform.</p>
 
-    <hr>
+                <hr>
 
-    <!-- Schedule -->
-    <h3>📅 Course Structure</h3>
-    <p><em>Note: Final schedule will be shared with participants before the course begins.</em></p>
+                <h3>🤝 Institutes & Sponsors</h3>
+                <p>University of Tartu Institute of Technology.</p>
+                <p>iFixIt & PCBWay</p>
 
-    <ul>
-        <li><strong>Week 1:</strong> Foundations of HRI, design methods, prototyping, ethics</li>
-        <li><strong>Weekend:</strong> Free time</li>
-        <li><strong>Week 2:</strong> Group project, experimentation, and final presentations</li>
-    </ul>
+            </div>
 
-    <p>
-        Students will work in teams to develop a robot prototype addressing a real-world challenge, 
-        culminating in a presentation and report, with potential for academic publication.
-    </p>
+            <!-- TAB 5: Projects & Gallery -->
+            <div id="projects-gallery" class="tab-pane">
+                
+                <!-- SECTION 1: PROJECTS -->
+                <h3>🚀 Student Projects & Prototypes</h3>
+                <p>
+                    Explore the research prototypes developed by participants during the summer school. 
+                    Click any project card to view the submitted short paper (PDF).
+                </p>
 
-    <hr>
+                <div class="projects-grid">
 
-    <!-- Outcomes -->
-    <h3>🎯 Learning Outcomes</h3>
-    <ul>
-        <li>Understand key concepts in human-robot interaction</li>
-        <li>Design and evaluate socially interactive robots</li>
-        <li>Program and customise robotic systems</li>
-        <li>Apply AI, MLOps, and IoT concepts</li>
-        <li>Assess ethical and societal implications</li>
-        <li>Develop and present a working robot prototype</li>
-    </ul>
+                    <!-- Project Card 1 -->
+                    <a href="papers/project-1-paper.pdf" target="_blank" class="project-card">
+                        <h4 class="project-card-title">Project Title 1: Interactive Social Companion</h4>
+                        <img src="https://via.placeholder.com/300x200/f1f5f9/00766c?text=Prototype+Image+1" alt="Project 1 Preview" class="project-card-img">
+                        <div class="project-card-footer">
+                            <span class="project-author-name">Student Name 1</span>
+                            <span class="project-author-affil">University Name</span>
+                        </div>
+                    </a>
 
-    <hr>
+                    <!-- Project Card 2 -->
+                    <a href="papers/project-2-paper.pdf" target="_blank" class="project-card">
+                        <h4 class="project-card-title">Project Title 2: Multimodal HRI Interface Design</h4>
+                        <img src="https://via.placeholder.com/300x200/f1f5f9/00766c?text=Prototype+Image+2" alt="Project 2 Preview" class="project-card-img">
+                        <div class="project-card-footer">
+                            <span class="project-author-name">Student Name 2</span>
+                            <span class="project-author-affil">University Name</span>
+                        </div>
+                    </a>
 
-    <!-- Future content -->
-    <h3>📸 During the Summer School</h3>
-    <p>
-        This page will be updated with student projects, photos, videos, and open-source contributions 
-        developed during the course.
-    </p>
+                    <!-- Project Card 3 -->
+                    <a href="papers/project-3-paper.pdf" target="_blank" class="project-card">
+                        <h4 class="project-card-title">Project Title 3: Robotic Expression & Gesture Control</h4>
+                        <img src="https://via.placeholder.com/300x200/f1f5f9/00766c?text=Prototype+Image+3" alt="Project 3 Preview" class="project-card-img">
+                        <div class="project-card-footer">
+                            <span class="project-author-name">Student Name 3</span>
+                            <span class="project-author-affil">University Name</span>
+                        </div>
+                    </a>
 
+                    <!-- Project Card 4 -->
+                    <a href="papers/project-4-paper.pdf" target="_blank" class="project-card">
+                        <h4 class="project-card-title">Project Title 4: Ambient Educational Assistant</h4>
+                        <img src="https://via.placeholder.com/300x200/f1f5f9/00766c?text=Prototype+Image+4" alt="Project 4 Preview" class="project-card-img">
+                        <div class="project-card-footer">
+                            <span class="project-author-name">Student Name 4</span>
+                            <span class="project-author-affil">University Name</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <hr class="gallery-section-title">
+
+                <!-- SECTION 2: PHOTO GALLERY -->
+                <h3>📸 Summer School Gallery</h3>
+                <p>Highlights, workshop activities, and laboratory sessions in Tartu.</p>
+
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://via.placeholder.com/400x300/f8fafc/64748b?text=Workshop+Session" alt="Gallery Photo 1">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://via.placeholder.com/400x300/f8fafc/64748b?text=Group+Brainstorming" alt="Gallery Photo 2">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://via.placeholder.com/400x300/f8fafc/64748b?text=Robot+Testing+Lab" alt="Gallery Photo 3">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://via.placeholder.com/400x300/f8fafc/64748b?text=Final+Presentations" alt="Gallery Photo 4">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
-
-    <!-- <h3>📸 Coming Soon</h3>
-    <p>
-    During the summer school, this page will be updated with:
-    - student projects
-    - photos & videos
-    - final prototypes
-    - open-source contributions
-    </p>  -->
-
-
+    <!-- Scripts -->
     <script>
+        // Mobile Menu Script
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenu = document.getElementById('closeMenu');
 
-        burgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-        });
-
-        // Close menu when clicking a link
+        burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('open'); });
+        closeMenu.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-            });
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
         });
+
+        // Tab Switching Script
+        function openTab(evt, tabName) {
+            const tabPanes = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabPanes.length; i++) {
+                tabPanes[i].classList.remove("active");
+            }
+
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
     </script>
 </body>
 </html>

@@ -51,6 +51,7 @@
         /* Date & Location Badges */
         .info-badges {
             display: flex;
+            justify-content: center; /* Centers the badge cards horizontally */
             gap: 15px;
             margin: 1.5rem 0;
             flex-wrap: wrap;
@@ -70,6 +71,7 @@
         /* UBISS Style Sub-Navigation Tabs */
         .sub-nav-tabs {
             display: flex;
+            justify-content: center; /* Centers the tab buttons along the navigation bar */
             border-bottom: 2px solid #0156a7;
             background-color: #f8f9fa;
             border-radius: 6px 6px 0 0;
@@ -237,6 +239,91 @@
         .photo-item:hover img {
             transform: scale(1.04);
         }
+
+        /* --- TAB 3: SPEAKERS STYLING --- */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .speaker-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-3px);
+            border-color: #0156a7;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .speaker-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        /* initials avatar circle */
+        .speaker-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: #0156a7; /* Primary theme blue */
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-meta h4 {
+            margin: 0 0 4px 0;
+            font-size: 1.1rem;
+            color: #0156a7;
+        }
+
+        .speaker-role {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .speaker-topic {
+            background-color: #f0f4f8;
+            border-left: 3px solid #0156a7;
+            padding: 10px 12px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: #1e293b;
+        }
+
+        .speaker-topic strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .speaker-bio {
+            font-size: 0.88rem;
+            color: #475569;
+            line-height: 1.5;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -292,10 +379,10 @@
             </div>
         </div>
 
-        <!-- Sub-navigation Tabs (From your sketch & UBISS style) -->
+        <!--Sub-navigation Tabs (From your sketch & UBISS style) -->
         <nav class="sub-nav-tabs">
             <button class="tab-btn active" onclick="openTab(event, 'course-detail')">Course Detail</button>
-            <button class="tab-btn" onclick="openTab(event, 'schedule')">Schedule</button>
+            <!-- <button class="tab-btn" onclick="openTab(event, 'schedule')">Schedule</button> -->
             <button class="tab-btn" onclick="openTab(event, 'speakers')">Speakers</button>
             <button class="tab-btn" onclick="openTab(event, 'instructors-sponsors')">Instructors & Sponsors</button>
             <button class="tab-btn" onclick="openTab(event, 'projects-gallery')">Projects & Gallery</button>
@@ -319,6 +406,20 @@
                         Apply via University of Tartu →
                     </a>
                 </p> -->
+
+                <h3>📅 Course Schedule</h3>
+                <p><em>Note: This schedule updates in real-time as changes are made.</em></p>
+
+                <!-- Google Sheet Embed -->
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1vbOTNKaa-ZHbTdnspJSTSTpOD8Bna8tSapUpJJZjlH8/edit?usp=sharing" 
+                        width="100%" 
+                        height="650" 
+                        style="border: 1px solid #d0d7de; border-radius: 6px;"
+                        loading="lazy">
+                    </iframe>
+                </div>
 
                 <hr>
 
@@ -350,15 +451,16 @@
                     <li>Assess ethical and societal implications</li>
                     <li>Develop and present a working robot prototype</li>
                 </ul>
+
             </div>
 
             <!-- TAB 2: Schedule -->
-            <div id="schedule" class="tab-pane">
+            <!-- <div id="schedule" class="tab-pane">
                 <h3>📅 Course Schedule</h3>
-                <p><em>Note: This schedule updates in real-time as changes are made.</em></p>
+                <p><em>Note: This schedule updates in real-time as changes are made.</em></p> -->
 
                 <!-- Google Sheet Embed -->
-                <div class="iframe-container">
+                <!-- <div class="iframe-container">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1vbOTNKaa-ZHbTdnspJSTSTpOD8Bna8tSapUpJJZjlH8/edit?usp=sharing" 
                         width="100%" 
@@ -367,13 +469,168 @@
                         loading="lazy">
                     </iframe>
                 </div>
-            </div>
+            </div> -->
+
+            <!-- TAB 3: Speakers -->
+            <!-- <div id="speakers" class="tab-pane">
+                <h3>🎙️ Invited Guest Speakers</h3>
+                <p>Information on guest speakers and keynotes will be announced soon.</p>
+            </div> -->
 
             <!-- TAB 3: Speakers -->
             <div id="speakers" class="tab-pane">
-                <h3>🎙️ Invited Guest Speakers</h3>
-                <p>Information on guest speakers and keynotes will be announced soon.</p>
+                <!-- <h3>🎙️ Invited Guest Speakers</h3> -->
+
+                <div class="speakers-grid">
+
+                    <!-- Speaker Card 1 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">KK</div>
+                            <div class="speaker-meta">
+                                <h4>Karl Kruusamäe</h4>
+                                <span class="speaker-role">Professor of Human-Centred Robotics, University of Tartu 🇪🇪</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong> 💬 Research in Human-Robot Interaction & Social Robotics</strong>
+                        </div>
+                        <p class="speaker-bio">
+                            leading research on human-robot interaction, 
+                            open-source social and educational robotics, and LLM-driven robot autonomy. International experience includes a post-doctoral position at AIST (Japan) and a research fellowship at the University of Texas at Austin (USA).
+                        </p>
+                    </div>
+
+                    <!-- Speaker Card 2 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">EE</div>
+                            <div class="speaker-meta">
+                                <h4>Eléni Economidou</h4>
+                                <span class="speaker-role">Postdoctoral researcher, <br> Aarhus University 🇩🇰</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <!-- <strong>💡 Presentation Title:</strong> -->
+                            <strong>📢 What Might a Robot Be? Design Probes for Artefact-Inspired Robots in the Home</strong>
+                        </div>
+                        <p class="speaker-bio">
+                        Eléni is a design researcher with a background in HCI, interaction design, and architecture. 
+                        She approaches knowledge production through the design of ultimate physical particulars for tangible, embodied interaction, grounded in critical or participatory design ethos.
+                        Her expertise lies in crafting shape-changing and other interactive interfaces for Human-Building Interaction, Human-Robot-Interaction, and Electronic Textiles (e-textiles) applications.                        </p>
+                    </div>
+
+                    <!-- Speaker Card 3 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">JC</div>
+                            <div class="speaker-meta">
+                                <h4>Jaroslav Cibulka</h4>
+                                <span class="speaker-role">Role here</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                    <!-- Speaker Card 4 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">AM</div>
+                            <div class="speaker-meta">
+                                <h4>Asad Munir</h4>
+                                <span class="speaker-role">Role here, University of Tartu 🇪🇪</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                    <!-- Speaker Card 5 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">FC</div>
+                            <div class="speaker-meta">
+                                <h4>Fanta Camara</h4>
+                                <span class="speaker-role">Role here</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                     <!-- Speaker Card 6 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">OE</div>
+                            <div class="speaker-meta">
+                                <h4>Omar Eldardeer</h4>
+                                <span class="speaker-role">Role here</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                    <!-- Speaker Card 7 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">SD</div>
+                            <div class="speaker-meta">
+                                <h4>Sid Drmay</h4>
+                                <span class="speaker-role">Role here</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                    <!-- Speaker Card 8 -->
+                    <div class="speaker-card">
+                        <div class="speaker-header">
+                            <div class="speaker-avatar">MJ</div>
+                            <div class="speaker-meta">
+                                <h4>Maša Jazbec</h4>
+                                <span class="speaker-role">Role here</span>
+                            </div>
+                        </div>
+                        <div class="speaker-topic">
+                            <strong>💡 Presentation Title:</strong>
+                            Topic here
+                        </div>
+                        <p class="speaker-bio">
+                            Bio here
+                        </p>
+                    </div>
+
+                </div>
             </div>
+
 
             <!-- TAB 4: Instructors & Sponsors -->
             <div id="instructors-sponsors" class="tab-pane">

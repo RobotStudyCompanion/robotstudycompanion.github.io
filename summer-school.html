@@ -426,7 +426,6 @@
         }
 
         /* 3. TA Compact Cards Layout */
-
         .tas-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Forces exactly 3 equal columns on 1 line */
@@ -524,6 +523,70 @@
             color: #1e293b;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
+         /* MOBILE OPTIMIZATIONS for Tab 2*/
+        @media (max-width: 768px) {
+            /* 1. Reduce tab content side padding so content gets maximum width */
+            .tab-content-container {
+                padding: 16px 12px;
+            }
+
+            /* 2. Instructors: Stack avatar on top of text and center align */
+            .instructors-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .instructor-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 16px;
+            }
+            .instructor-img {
+                width: 80px;
+                height: 80px;
+            }
+            .expertise-tags {
+                justify-content: center;
+            }
+
+            /* 3. TAs: Collapse from 3 tight columns into 1 full-width row per TA */
+            .tas-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .ta-card {
+                padding: 12px;
+            }
+
+            /* 4. Guest Speakers: Stack in a single column & scale down avatars slightly */
+            .speakers-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .speaker-card {
+                padding: 16px;
+            }
+            .speaker-avatar {
+                width: 56px;
+                height: 56px;
+                font-size: 1.1rem;
+            }
+            .speaker-meta h4 {
+                font-size: 1rem;
+            }
+            .speaker-role {
+                font-size: 0.82rem;
+            }
+
+            /* 5. Acknowledgements Tag Cloud */
+            .acknowledgements-box {
+                padding: 16px;
+            }
+            .name-tag {
+                font-size: 0.8rem;
+                padding: 4px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -576,7 +639,6 @@
             </div>
             <div class="badge-card">
                 📍 <span>Delta Centre, Tartu, Estonia</span>
-                <!-- https://maps.app.goo.gl/vng7L15Q5PYrVbKk8 -->
                 <!-- <a href="https://maps.app.goo.gl/vng7L15Q5PYrVbKk8" target="_blank" rel="noopener noreferrer" class="badge-card">
                 📍 <span>Delta Centre, Tartu, Estonia</span>
                 </a> -->

@@ -725,6 +725,39 @@
                         loading="lazy">
                     </iframe>
                 </div>
+                
+                <h3>🔌 Lanyard Badge — DIY Build Assignment</h3>
+            <p>
+                As part of the course, participants solder and assemble a custom PCB lanyard badge.
+                Use the interactive Bill of Materials (iBOM) to identify components and track your build progress.
+            </p>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.75rem;">
+                <button id="ibom-toggle-btn" onclick="toggleIbom()" style="
+                    background:#0156a7; color:#fff; border:none; border-radius:6px;
+                    padding:9px 18px; font-size:0.9rem; cursor:pointer; font-weight:600;">
+                    📋 View Interactive BOM
+                </button>
+                <a href="badge2026ibom.html" target="_blank" style="
+                    display:inline-flex; align-items:center; gap:5px;
+                    font-size:0.9rem; color:#0156a7; text-decoration:none; font-weight:500;">
+                    ↗ Open in new tab
+                </a>
+            </div>
+
+            <div id="ibom-container" style="display:none; margin-top:0.5rem;">
+                <iframe
+                    id="ibom-frame"
+                    width="100%"
+                    height="700"
+                    style="border:1px solid #d0d7de; border-radius:6px;"
+                    title="Interactive Bill of Materials — Lanyard Badge">
+                </iframe>
+            </div>
+
+
+
+
 
                 <hr>
 
@@ -1116,6 +1149,21 @@
 
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
+        }
+
+        function toggleIbom() {
+            const container = document.getElementById('ibom-container');
+            const frame = document.getElementById('ibom-frame');
+            const btn = document.getElementById('ibom-toggle-btn');
+            const isHidden = container.style.display === 'none';
+
+            container.style.display = isHidden ? 'block' : 'none';
+            btn.textContent = isHidden ? '🔼 Hide Interactive BOM' : '📋 View Interactive BOM';
+
+            // Lazy-load: only set src on first open
+            if (isHidden && !frame.src) {
+                frame.src = 'badge2026ibom.html';
+            }
         }
     </script>
 </body>

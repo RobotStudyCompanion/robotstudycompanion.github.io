@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UT-Nutiplaat — Serial Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sheet:#FCFCF6;
+    --ink:#16181C;
+    --frame:#3E4148;
+    --hair:#C9CBC2;
+    --net:#0B1A9B;          /* schematic wire blue */
+    --comp-fill:#FFFCC8;    /* component block yellow */
+    --comp-line:#8C1B1B;    /* component outline red */
+    --dim:#6B6E68;
+    --ok:#12653A;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:#E8E9E3; color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    padding:16px;
+  }
+
+  /* ---- schematic sheet frame ---- */
+  .sheet{
+    background:var(--sheet); width:min(1180px,100%); height:min(800px,calc(100vh - 32px));
+    border:1px solid var(--frame); position:relative;
+    display:grid; grid-template-columns:22px 1fr 22px; grid-template-rows:22px 1fr 22px;
+  }
+  .rail{display:flex; color:var(--dim); font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.06em}
+  .rail.top,.rail.bottom{grid-column:2; flex-direction:row}
+  .rail.left,.rail.right{grid-row:2; flex-direction:column}
+  .rail span{flex:1; display:grid; place-items:center; border-right:1px solid var(--hair)}
+  .rail.left span,.rail.right span{border-right:0; border-bottom:1px solid var(--hair)}
+  .rail span:last-child{border:0}
+  .corner{border:0}
+
+  .body{grid-column:2; grid-row:2; border:1px solid var(--hair); display:flex; min-height:0}
+
+  /* ---- left column ---- */
+  .panel{
+    width:250px; flex:none; border-right:1px solid var(--hair);
+    padding:14px; display:flex; flex-direction:column; gap:14px; overflow-y:auto;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:700;
+    font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim);
+  }
+  h1{
+    font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:700;
+    font-size:19px; margin:2px 0 0; letter-spacing:.01em;
+  }
+  h1 small{display:block; font-weight:500; font-size:12px; color:var(--dim); letter-spacing:.02em}
+
+  /* component-block styling, straight off the schematic */
+  .block{border:1.5px solid var(--comp-line); background:var(--comp-fill); padding:10px}
+  .block .eyebrow{color:var(--comp-line)}
+
+  button{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:500;
+    background:var(--sheet); color:var(--ink); border:1px solid var(--frame);
+    padding:7px 9px; cursor:pointer; width:100%; text-align:left;
+  }
+  button:hover:not(:disabled){background:#fff; border-color:var(--net); color:var(--net)}
+  button:disabled{opacity:.35; cursor:not-allowed}
+  button:focus-visible{outline:2px solid var(--net); outline-offset:1px}
+  .primary{background:var(--net); color:#fff; border-color:var(--net); text-align:center; font-weight:600}
+  .primary:hover:not(:disabled){background:#09187a; color:#fff}
+
+  .cmds{display:flex; flex-direction:column; gap:5px; margin-top:7px}
+  .cmds button{display:flex; gap:9px; align-items:baseline}
+  .cmds b{color:var(--net); font-weight:600; min-width:12px}
+  .cmds span{font-family:"IBM Plex Sans",sans-serif; font-size:11.5px; color:var(--dim)}
+
+  label.row{display:flex; align-items:center; gap:7px; font-size:11.5px; font-family:"IBM Plex Mono",monospace}
+  select{font-family:"IBM Plex Mono",monospace; font-size:12px; padding:5px; border:1px solid var(--frame); background:var(--sheet)}
+  .sigs{display:flex; flex-direction:column; gap:5px; margin-top:8px}
+  .note{font-size:11px; line-height:1.45; color:var(--dim)}
+
+  /* ---- log ---- */
+  .main{flex:1; display:flex; flex-direction:column; min-width:0}
+  .toolbar{
+    display:flex; gap:8px; align-items:center; padding:8px 12px;
+    border-bottom:1px solid var(--hair); font-family:"IBM Plex Mono",monospace; font-size:11px;
+  }
+  .toolbar button{width:auto; padding:4px 8px; font-size:11px}
+  .spacer{flex:1}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--dim); flex:none}
+  .dot.on{background:var(--ok)}
+  .dot.err{background:var(--comp-line)}
+  #log{
+    flex:1; overflow-y:auto; margin:0; padding:12px 14px;
+    font-family:"IBM Plex Mono",monospace; font-size:12.5px; line-height:1.55;
+    white-space:pre-wrap; word-break:break-word; background:var(--sheet);
+  }
+  #log .sys{color:var(--net)}
+  #log .err{color:var(--comp-line)}
+  .keyline{
+    border-top:1px solid var(--hair); padding:8px 12px; display:flex; gap:8px; align-items:center;
+  }
+  #key{
+    flex:1; font-family:"IBM Plex Mono",monospace; font-size:12px;
+    padding:6px 8px; border:1px solid var(--frame); background:var(--sheet); min-width:0;
+  }
+  #key:focus{outline:2px solid var(--net); outline-offset:-1px}
+
+  /* ---- title block (signature) ---- */
+  .titleblock{
+    position:absolute; right:23px; bottom:23px; z-index:2;
+    border:1px solid var(--frame); background:var(--sheet);
+    font-family:"IBM Plex Mono",monospace; font-size:10px; line-height:1.35;
+    display:grid; grid-template-columns:auto auto;
+  }
+  .titleblock div{padding:3px 8px; border-right:1px solid var(--hair); border-bottom:1px solid var(--hair)}
+  .titleblock div:nth-child(2n){border-right:0}
+  .titleblock div:nth-last-child(-n+2){border-bottom:0}
+  .titleblock .k{color:var(--dim)}
+  .titleblock .v{font-weight:600}
+
+  .unsupported{padding:26px; max-width:560px; font-size:13.5px; line-height:1.6}
+  .unsupported h2{font-family:"IBM Plex Sans Condensed",sans-serif; margin:0 0 10px}
+  .unsupported code{background:#EFEFE8; padding:1px 5px; font-family:"IBM Plex Mono",monospace}
+
+  @media (max-width:760px){
+    .body{flex-direction:column}
+    .panel{width:auto; border-right:0; border-bottom:1px solid var(--hair)}
+    .titleblock{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="corner"></div>
+  <div class="rail top"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+  <div class="corner"></div>
+  <div class="rail left"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+
+  <div class="body" id="app">
+    <aside class="panel">
+      <div>
+        <div class="eyebrow">Tartu Ülikool</div>
+        <h1>UT-Nutiplaat<small>Serial terminal · R2</small></h1>
+      </div>
+
+      <div class="block">
+        <div class="eyebrow">Connection</div>
+        <label class="row" style="margin:8px 0">
+          baud
+          <select id="baud">
+            <option>9600</option><option>74880</option>
+            <option selected>115200</option><option>230400</option><option>921600</option>
+          </select>
+        </label>
+        <button class="primary" id="connect">Connect</button>
+        <div class="sigs">
+          <label class="row"><input type="checkbox" id="dtr"> DTR &nbsp;<span style="color:var(--dim)">→ IO0</span></label>
+          <label class="row"><input type="checkbox" id="rts"> RTS &nbsp;<span style="color:var(--dim)">→ EN</span></label>
+        </div>
+        <p class="note" style="margin:8px 0 0">Both stay off. Ticking RTS holds the board in reset.</p>
+      </div>
+
+      <div>
+        <div class="eyebrow">Board commands</div>
+        <div class="cmds">
+          <button class="cmd" data-k="?" disabled><b>?</b><span>Show menu</span></button>
+          <button class="cmd" data-k="t" disabled><b>t</b><span>Self test</span></button>
+          <button class="cmd" data-k="k" disabled><b>k</b><span>Knobs</span></button>
+          <button class="cmd" data-k="i" disabled><b>i</b><span>Scan I²C</span></button>
+          <button class="cmd" data-k="u" disabled><b>u</b><span>Ultrasonic</span></button>
+          <button class="cmd" data-k="r" disabled><b>r</b><span>PIR motion</span></button>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Board</div>
+        <div class="cmds"><button id="reset" disabled>Reset board</button></div>
+        <p class="note" style="margin:7px 0 0">Pulses EN low, same as the on-board button.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="toolbar">
+        <span class="dot" id="dot"></span>
+        <span id="state">Not connected</span>
+        <span class="spacer"></span>
+        <button id="save" disabled>Save log</button>
+        <button id="clear">Clear</button>
+      </div>
+      <div id="log"><span class="sys">Connect a board to begin.</span>
+</div>
+      <div class="keyline">
+        <input id="key" placeholder="Type a command or an answer, then press Enter" disabled autocomplete="off">
+      </div>
+    </main>
+  </div>
+
+  <div class="rail right"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+  <div class="corner"></div>
+  <div class="rail bottom"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+
+  <div class="titleblock">
+    <div class="k">Port</div><div class="v" id="tbPort">—</div>
+    <div class="k">Baud</div><div class="v" id="tbBaud">115200</div>
+    <div class="k">Signals</div><div class="v" id="tbSig">DTR 0 · RTS 0</div>
+    <div class="k">Sheet</div><div class="v">1 of 1</div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const logEl = $('log');
+let port = null, reader = null, writer = null, keepReading = false;
+
+function write(text, cls){
+  const atBottom = logEl.scrollHeight - logEl.scrollTop - logEl.clientHeight < 40;
+  const node = cls ? Object.assign(document.createElement('span'), {className:cls, textContent:text})
+                   : document.createTextNode(text);
+  logEl.appendChild(node);
+  if (atBottom) logEl.scrollTop = logEl.scrollHeight;
+}
+
+function setState(text, kind){
+  $('state').textContent = text;
+  $('dot').className = 'dot' + (kind ? ' ' + kind : '');
+}
+
+function enable(on){
+  document.querySelectorAll('.cmd').forEach(b => b.disabled = !on);
+  $('reset').disabled = !on;
+  $('save').disabled = !on;
+  $('key').disabled = !on;
+  $('baud').disabled = on;
+  $('connect').textContent = on ? 'Disconnect' : 'Connect';
+}
+
+async function applySignals(){
+  if (!port) return;
+  const dtr = $('dtr').checked, rts = $('rts').checked;
+  try { await port.setSignals({dataTerminalReady:dtr, requestToSend:rts}); }
+  catch(e){ write('\n[signals failed: ' + e.message + ']\n','err'); }
+  $('tbSig').textContent = `DTR ${dtr?1:0} · RTS ${rts?1:0}`;
+}
+
+async function connect(){
+  if (port) return disconnect();
+  if (!('serial' in navigator)) return;
+  try {
+    port = await navigator.serial.requestPort();
+    const baudRate = Number($('baud').value);
+    await port.open({baudRate});
+
+    // The board wires RTS to EN and DTR to IO0 directly. Browsers assert both
+    // on open, which holds the ESP32 in reset. Clear them immediately.
+    $('dtr').checked = false; $('rts').checked = false;
+    await applySignals();
+
+    const info = port.getInfo();
+    $('tbPort').textContent = info.usbVendorId
+      ? `${info.usbVendorId.toString(16).padStart(4,'0')}:${info.usbProductId.toString(16).padStart(4,'0')}`
+      : 'serial';
+    $('tbBaud').textContent = baudRate;
+
+    writer = port.writable.getWriter();
+    setState('Connected · ' + baudRate, 'on');
+    enable(true);
+    write('\n[connected — DTR and RTS cleared. Press Reset board or ? to begin]\n\n','sys');
+    $('key').focus();
+    readLoop();
+  } catch(e){
+    port = null;
+    if (e.name !== 'NotFoundError') { setState('Connection failed','err'); write('\n[' + e.message + ']\n','err'); }
+  }
+}
+
+async function readLoop(){
+  keepReading = true;
+  const decoder = new TextDecoderStream();
+  const closed = port.readable.pipeTo(decoder.writable).catch(()=>{});
+  reader = decoder.readable.getReader();
+  try {
+    while (keepReading){
+      const {value, done} = await reader.read();
+      if (done) break;
+      if (value) write(value);
+    }
+  } catch(e){
+    write('\n[read stopped: ' + e.message + ']\n','err');
+  } finally {
+    try { reader.releaseLock(); } catch(_){}
+    await closed;
+  }
+}
+
+async function disconnect(){
+  keepReading = false;
+  try { if (reader) await reader.cancel(); } catch(_){}
+  try { if (writer){ writer.releaseLock(); writer = null; } } catch(_){}
+  try { if (port) await port.close(); } catch(_){}
+  port = null; reader = null;
+  enable(false);
+  setState('Not connected');
+  $('tbPort').textContent = '—';
+  write('\n[disconnected]\n\n','sys');
+}
+
+async function send(ch){
+  if (!writer) return;
+  try { await writer.write(new TextEncoder().encode(ch)); }
+  catch(e){ write('\n[send failed: ' + e.message + ']\n','err'); }
+}
+
+async function resetBoard(){
+  if (!port) return;
+  write('\n[resetting]\n','sys');
+  try {
+    await port.setSignals({requestToSend:true, dataTerminalReady:false});  // EN low
+    await new Promise(r => setTimeout(r, 120));
+    await port.setSignals({requestToSend:false, dataTerminalReady:false}); // release
+  } catch(e){ write('[reset failed: ' + e.message + ']\n','err'); }
+  $('rts').checked = false; $('dtr').checked = false;
+  $('tbSig').textContent = 'DTR 0 · RTS 0';
+}
+
+$('connect').addEventListener('click', connect);
+$('reset').addEventListener('click', resetBoard);
+$('dtr').addEventListener('change', applySignals);
+$('rts').addEventListener('change', applySignals);
+document.querySelectorAll('.cmd').forEach(b => b.addEventListener('click', () => { send(b.dataset.k + '\n'); $('key').focus(); }));
+$('clear').addEventListener('click', () => { logEl.textContent = ''; });
+$('save').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([logEl.textContent], {type:'text/plain'}));
+  a.download = 'nutiplaat-' + new Date().toISOString().slice(0,19).replace(/[:T]/g,'-') + '.log';
+  a.click(); URL.revokeObjectURL(a.href);
+});
+$('key').addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  const line = e.target.value;
+  e.target.value = '';
+  send(line + '\n');
+});
+navigator.serial?.addEventListener('disconnect', () => { if (port) disconnect(); });
+window.addEventListener('beforeunload', () => { if (port) { try{ port.close(); }catch(_){} } });
+
+if (!('serial' in navigator)){
+  enable(false);
+  $('app').innerHTML = `<div class="unsupported">
+    <h2>This browser can't reach the serial port</h2>
+    <p>Web Serial is missing or switched off. Fixes, by browser:</p>
+    <p><b>Brave</b> — open <code>brave://flags/#brave-web-serial-api</code>, set it to Enabled, relaunch.</p>
+    <p><b>Firefox</b> — needs version 151 or newer (May 2026). Check <code>about:support</code>.</p>
+    <p><b>Chrome / Edge / Opera</b> — works from version 89. Safari doesn't support it at all.</p>
+    <p>Also note: the page must be served over <code>https://</code> or from <code>localhost</code>.</p>
+  </div>`;
+}
+</script>
+</body>
+</html>

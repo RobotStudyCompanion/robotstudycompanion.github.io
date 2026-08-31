@@ -291,28 +291,42 @@
 </script>
 
 <!-- logo carousel button-->
+
 <script>
-    const carousel = document.querySelector('.logo-carousel');
+    const track = document.querySelector('.logo-track');
     const nextBtn = document.querySelector('.next');
     const prevBtn = document.querySelector('.prev');
 
-    const scrollAmount = 200; // how much to move each click
+    const scrollAmount = 250;
 
     nextBtn.addEventListener('click', () => {
-    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' }); // 🔁 reset
-    } else {
-        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+        // Only scroll if content is actually wider than the visible container
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        
+        if (maxScroll <= 0) return; // Content fits on screen, no scroll needed
+
+        // Check if we are within 10px of the end
+        if (track.scrollLeft >= maxScroll - 10) {
+            track.scrollTo({ left: 0, behavior: 'smooth' }); // Loop back to start
+        } else {
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
     });
 
     prevBtn.addEventListener('click', () => {
-    if (carousel.scrollLeft <= 0) {
-        carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' }); // 🔁 jump to end
-    } else {
-        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    }
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        
+        if (maxScroll <= 0) return;
+
+        if (track.scrollLeft <= 10) {
+            track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' }); // Loop to end
+        } else {
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
     });
 </script>
+
+
+
 
 </html>

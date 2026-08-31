@@ -534,26 +534,38 @@ footer a:hover {
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  gap: 10px; /* ADDED: Space between buttons and logos */
 }
 
 .logo-track {
   display: flex;
   gap: 3rem;
-  transition: transform 0.4s ease;
+  align-items: center;
+  /* ADDED: Required for JS scrolling and native swipe */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px 0;
+  flex-wrap: nowrap;
+
+  /* ADDED: Hide scrollbars across browsers */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.logo-track::-webkit-scrollbar {
+  display: none; 
 }
 
 .logo-track img {
-  height: 60px;
-  opacity: 0.7;
-  filter: grayscale(40%);
-  transition: 0.3s;
-}
-
-.logo-track img:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1.05);
+    height: 60px;
+    /* Forces images to maintain full width so they overflow on desktop */
+    /*min-width: 180px; */
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.7;
+    filter: grayscale(40%);
+    transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 }
 
 /* arrows */

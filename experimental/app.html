@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RSC Console</title>
+<link rel="icon" href="rsc-logo.png">
+<link rel="stylesheet" href="app.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></symbol>
+    <symbol id="i-shrink" viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l6.5-6.5M10 14l-6.5 6.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v8M6.4 6.6a8 8 0 1 0 11.2 0"/></symbol>
+    <symbol id="i-unplug" viewBox="0 0 24 24"><path d="M9 3v4M15 3v4M7 7h10v3a5 5 0 0 1-10 0zM12 15v6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-6 4z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h8M16 6h4M4 12h2M10 12h10M4 18h10M18 18h2"/><circle cx="14" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="18" r="2"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+    <symbol id="i-routine" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="5" rx="1.5"/><rect x="14.5" y="15" width="6" height="5" rx="1.5"/><path d="M9.5 6.5h3a3 3 0 0 1 3 3V15"/></symbol>
+    <symbol id="i-dash" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="4" rx="1.5"/><rect x="13" y="10" width="7" height="10" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-speaker-off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 10l4 4M21 10l-4 4"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+    <symbol id="i-mic-off" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M4 4l16 16"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><path d="M20 11.5l-7.8 7.8a5 5 0 0 1-7.1-7.1l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4 4v4h4"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM8 4v5h7V4M8 20v-6h8v6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 32 32"><path d="M14 6.5h4M16 6.5V9"/><rect x="6" y="9" width="20" height="13" rx="3.5"/><rect x="9" y="11.5" width="14" height="8" rx="1.5"/><path d="M4 12v6M28 12v6M13 22l-2 4h10l-2-4"/></symbol>
+</svg>
+
+<div class="frame">
+    <div class="app">
+        <section class="connect" id="viewConnect" aria-labelledby="connectH">
+            <div class="connect-inner">
+                <div class="brand"><img src="rsc-logo.png" alt="" width="43" height="36"><span>RSC Console</span></div>
+                <h1 id="connectH">Connect to a robot</h1>
+                <p class="connect-note" id="connectNote" role="status" hidden></p>
+                <div class="recent" id="recentWrap">
+                    <h2 class="eyebrow">Recent</h2>
+                    <ul id="recentList"></ul>
+                </div>
+                <form class="connect-form" id="connectForm" novalidate>
+                    <h2 class="eyebrow">Another robot</h2>
+                    <div class="cf-grid">
+                        <label>Address<input class="input" id="cfHost" placeholder="your-robot.local" autocomplete="off" spellcheck="false"></label>
+                        <label>Port<input class="input" id="cfPort" value="8765" inputmode="numeric"></label>
+                        <label class="full">Token<input class="input" id="cfToken" type="password" autocomplete="off"></label>
+                    </div>
+                    <p class="form-err" id="cfErr" role="alert" hidden></p>
+                    <div class="cf-actions">
+                        <button type="submit" class="btn primary" id="cfSubmit">Connect</button>
+                        <button type="button" class="btn" id="scanBtn" data-act="scan">Scan network</button>
+                    </div>
+                    <ul class="scan-list" id="scanList" hidden></ul>
+                </form>
+            </div>
+        </section>
+
+        <div class="shell" id="shell" hidden>
+            <header class="topbar">
+                <button type="button" class="icon-btn" id="burger" data-act="menu" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+                <div class="tb-id">
+                    <h1 class="tb-title" id="tbTitle">Console</h1>
+                    <div class="tb-robot"><span class="dot" aria-hidden="true"></span><span class="tb-name" id="tbName"></span><span class="chip" id="tbReady">connecting</span></div>
+                </div>
+                <div class="tb-spacer"></div>
+                <img class="tb-logo" src="rsc-logo.png" alt="RSC, Robot Study Companion" width="38" height="32">
+                <button type="button" class="btn log-toggle" id="logToggle" data-act="toggleLog" aria-pressed="true">Log<span class="badge" id="tbLogBadge" hidden></span></button>
+                <button type="button" class="btn stop" id="stopAll" data-act="stopAll" aria-label="Stop all motors"><svg class="ic"><use href="#i-stop"/></svg><span>Stop all</span></button>
+            </header>
+
+            <div class="workspace">
+                <main class="page" id="pageConsole" aria-labelledby="tbTitle">
+                    <div id="consoleRoot"></div>
+                </main>
+
+                <main class="page page-chat" id="pageChat" aria-labelledby="tbTitle" hidden>
+                    <aside class="chat-side" aria-label="Chats">
+                        <div id="chatSideList"></div>
+                        <button type="button" class="btn" data-act="newChat"><svg class="ic"><use href="#i-plus"/></svg>New chat</button>
+                    </aside>
+                    <div class="chat-main">
+                        <div class="chat-head">
+                            <h2 id="chatTitle"></h2>
+                            <button type="button" class="icon-btn" data-act="newChat" aria-label="New chat" title="New chat"><svg class="ic"><use href="#i-plus"/></svg></button>
+                        </div>
+                        <div class="chat-scroll" id="chatScroll"><div class="chat-msgs" id="chatMsgs" aria-live="polite"></div></div>
+                        <form class="composer" id="composer">
+                            <div class="files" id="fileChips" hidden></div>
+                            <div class="composer-row">
+                                <button type="button" class="icon-btn" data-act="attach" aria-label="Attach files" title="Attach files"><svg class="ic"><use href="#i-clip"/></svg></button>
+                                <input type="file" id="fileInput" multiple hidden>
+                                <textarea id="chatInput" rows="1" placeholder="Ask your study companion…" aria-label="Message"></textarea>
+                                <div class="listening" id="listening" role="status" hidden><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Listening. Speak to the robot.</span></div>
+                                <button type="button" class="icon-btn" id="micBtn" data-act="voice" aria-pressed="false" aria-label="Talk to the robot" title="Talk to the robot"><svg class="ic"><use href="#i-mic"/></svg></button>
+                                <button type="submit" class="btn primary" id="chatSend"><svg class="ic"><use href="#i-send"/></svg><span>Send</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+
+                <main class="page" id="pageSettings" aria-labelledby="tbTitle" hidden>
+                    <div class="settings">
+                        <section class="card" aria-labelledby="setAppH">
+                            <h2 id="setAppH">Appearance</h2>
+                            <div class="field">
+                                <span class="field-label" id="themeL">Theme</span>
+                                <div class="seg" role="radiogroup" aria-labelledby="themeL">
+                                    <label class="seg-opt"><input type="radio" name="theme" id="theme-auto" value="auto"><span>Auto</span></label>
+                                    <label class="seg-opt"><input type="radio" name="theme" id="theme-light" value="light"><span>Light</span></label>
+                                    <label class="seg-opt"><input type="radio" name="theme" id="theme-dark" value="dark"><span>Dark</span></label>
+                                </div>
+                            </div>
+                            <p class="hint">Auto follows your device.</p>
+                        </section>
+                        <section class="card" aria-labelledby="setRobotH">
+                            <h2 id="setRobotH">Robot</h2>
+                            <dl class="kv">
+                                <dt>Address</dt><dd id="setHost"></dd>
+                                <dt>Port</dt><dd id="setPort"></dd>
+                                <dt>Software</dt><dd id="setVersion">unknown</dd>
+                                <dt>Hardware</dt><dd id="setBackend">unknown</dd>
+                            </dl>
+                        </section>
+                    </div>
+                </main>
+
+                <aside class="log" id="log" aria-label="Log">
+                    <div class="log-grip" id="logGrip" tabindex="0" role="separator" aria-label="Resize the log with the arrow keys" title="Drag to resize"></div>
+                    <div class="log-head">
+                        <button type="button" class="log-title" data-act="logBody" aria-expanded="false"><strong>Log</strong><span class="badge" id="logBadge" hidden></span><span class="log-last" id="logLast"></span><svg class="ic chev"><use href="#i-chev"/></svg></button>
+                        <button type="button" class="icon-btn sm log-tool" data-act="copyLog" aria-label="Copy log" title="Copy"><svg class="ic"><use href="#i-copy"/></svg></button>
+                        <button type="button" class="icon-btn sm log-tool" data-act="saveLog" aria-label="Save log" title="Save"><svg class="ic"><use href="#i-dl"/></svg></button>
+                        <button type="button" class="icon-btn sm log-tool" data-act="clearLog" aria-label="Clear log" title="Clear"><svg class="ic"><use href="#i-trash"/></svg></button>
+                        <button type="button" class="icon-btn sm log-tool" id="logExpand" data-act="logExpand" aria-label="Expand log" title="Expand"><svg class="ic"><use href="#i-expand"/></svg></button>
+                        <button type="button" class="icon-btn sm" data-act="logClose" aria-label="Hide log" title="Hide"><svg class="ic"><use href="#i-x"/></svg></button>
+                    </div>
+                    <div class="log-filters" role="group" aria-label="Show entries">
+                        <button type="button" data-act="filter:all" aria-pressed="true">All</button>
+                        <button type="button" data-act="filter:sent" aria-pressed="false">Sent</button>
+                        <button type="button" data-act="filter:ack" aria-pressed="false">Replies</button>
+                        <button type="button" data-act="filter:event" aria-pressed="false">Events</button>
+                        <button type="button" data-act="filter:err" aria-pressed="false">Errors</button>
+                    </div>
+                    <ol class="log-list" id="logList"></ol>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="menu-backdrop" id="menuBackdrop" data-act="closeMenu" hidden></div>
+<nav class="menu" id="menu" aria-label="Main menu" hidden>
+    <button type="button" class="menu-item" data-act="nav:console" data-nav="console"><svg class="ic"><use href="#i-sliders"/></svg>Console</button>
+    <button type="button" class="menu-item" data-act="nav:chat" data-nav="chat"><svg class="ic"><use href="#i-chat"/></svg>Chat</button>
+    <div class="menu-chats" id="menuChats">
+        <div id="menuChatList"></div>
+        <button type="button" class="menu-item" data-act="newChat"><svg class="ic"><use href="#i-plus"/></svg>New chat</button>
+    </div>
+    <button type="button" class="menu-item" disabled><svg class="ic"><use href="#i-routine"/></svg>Routines<span class="chip">Soon</span></button>
+    <button type="button" class="menu-item" disabled><svg class="ic"><use href="#i-dash"/></svg>Dashboard<span class="chip">Soon</span></button>
+    <div class="menu-sep"></div>
+    <button type="button" class="menu-item" data-act="nav:settings" data-nav="settings"><svg class="ic"><use href="#i-gear"/></svg>Settings</button>
+    <div class="menu-foot">
+        <div class="menu-sep"></div>
+        <button type="button" class="menu-item" data-act="power"><svg class="ic"><use href="#i-power"/></svg>Power…</button>
+        <button type="button" class="menu-item danger-t" data-act="disconnect"><svg class="ic"><use href="#i-unplug"/></svg>Disconnect</button>
+    </div>
+</nav>
+
+<div class="modal-bg" id="powerBg" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="powerH">
+        <h2 id="powerH">Power</h2>
+        <p id="powerBody" class="dim"></p>
+        <div class="row">
+            <button type="button" class="btn danger" id="powerReboot" data-act="power:reboot">Restart</button>
+            <button type="button" class="btn danger" id="powerOff" data-act="power:poweroff">Shut down</button>
+            <button type="button" class="btn ghost" data-act="closePower">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-bg" id="resetBg" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resetH">
+        <h2 id="resetH">Reset everything?</h2>
+        <p class="dim">Everything goes back to its initial settings.</p>
+        <div class="row">
+            <button type="button" class="btn danger" data-act="resetAllGo">Reset everything</button>
+            <button type="button" class="btn ghost" data-act="closeReset">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-bg" id="presetBg" hidden>
+    <form class="modal" id="presetForm" role="dialog" aria-modal="true" aria-labelledby="presetH" novalidate>
+        <h2 id="presetH">Save as a preset</h2>
+        <p class="dim">Saves the current light ring, button light, face, sound and microphone settings under a name. Pick it from Presets later to set them all again in one go.</p>
+        <div class="field"><label for="presetName">Name</label><input class="input" id="presetName" maxlength="40" autocomplete="off" placeholder="Quiet study session"></div>
+        <p class="form-err" id="presetErr" role="alert" hidden></p>
+        <div class="row">
+            <button type="submit" class="btn primary">Save preset</button>
+            <button type="button" class="btn ghost" data-act="closePreset">Cancel</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

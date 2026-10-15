@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>rsc-host console</title>
 <style>
     :root {
@@ -250,6 +251,8 @@
         align-items: center;
     }
 </style>
+<!-- Chat panel prototype: layout for chat.js. Remove with the scripts at the end. -->
+<link rel="stylesheet" href="chat.css">
 </head>
 <body>
 
@@ -1187,5 +1190,10 @@ if (location.hash) {
     log("info", "tip: bookmark rsc.ee/console.html#your-robot to prefill next time");
 }
 </script>
+
+<!-- Chat panel prototype. deep-chat is an ES module; chat.js is a deferred
+     classic script so it runs after it, and still works from file://. -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/deep-chat@2.5.1/dist/deepChat.bundle.js"></script>
+<script defer src="chat.js"></script>
 </body>
 </html>

@@ -1,0 +1,425 @@
+/* ---- Chat panel (prototype) ----
+ *
+ * Layout and chrome for chat.js. Uses the console's :root tokens only, and
+ * every layout rule is scoped to body[data-chat-layout] (set by chat.js), so
+ * if the script does not run the console looks exactly as it did.
+ *
+ * Nothing here changes how the existing controls or the event log look. The
+ * body grid gains a chat column, and where a layout has no room for the
+ * controls or the log they move into drawers: positioning, not styling.
+ *
+ *   desktop side     380px controls | chat | log
+ *   desktop centre   chat | log, controls in a drawer behind the burger
+ *   761-1100px       the log moves into a drawer in both layouts
+ *   <=760px          phone, one bar, see the end of the file
+ */
+
+/* ---- Chat column (all widths) ---- */
+
+.chat {
+    grid-area: chat;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    border-right: 1px solid var(--panel-hi);
+}
+
+/* Matches the log's sticky "event log" bar. */
+.chat-head {
+    position: relative;   /* anchors the chat list */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px 8px 14px;
+    border-bottom: 1px solid var(--panel-hi);
+    font: 13px var(--mono);
+    flex: none;
+}
+.chat-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font: 11px var(--mono);
+    background: rgba(255, 178, 102, 0.15);
+    color: var(--warn);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chat-head-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
+.chat-head-btn {
+    padding: 4px 10px;
+    background: var(--panel);
+    color: var(--fg);
+    border: 1px solid var(--panel-hi);
+    border-radius: 6px;
+    font: 12px var(--mono);
+    cursor: pointer;
+    position: relative;
+}
+.chat-head-btn:hover,
+.chat-head-btn[aria-expanded="true"] { background: var(--panel-hi); border-color: var(--accent); }
+.chat-new { font-size: 15px; line-height: 1; padding: 3px 9px 5px; }
+.chat-log-btn { display: none; }
+/* New entries arrived while the log was out of sight. */
+.chat-log-btn[data-unread]::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--warn);
+}
+
+/* Chat switcher: the current chat's title, opening a list of chats. */
+.chat-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    max-width: 320px;
+    padding: 4px 8px;
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+}
+.chat-switch:hover,
+.chat-switch[aria-expanded="true"] { background: var(--panel); border-color: var(--panel-hi); }
+.chat-switch-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chat-switch-caret { color: var(--fg-dim); font-size: 11px; }
+
+.chat-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 12px;
+    z-index: 20;
+    width: min(360px, calc(100% - 24px));
+    max-height: min(60vh, calc(100vh - var(--chat-bar-bottom, 100px) - 16px));
+    overflow-y: auto;
+    padding: 4px;
+    background: var(--panel);
+    border: 1px solid var(--panel-hi);
+    border-radius: 6px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    font: 14px/1.35 system-ui, -apple-system, sans-serif;
+}
+.chat-list[hidden] { display: none; }
+.chat-list-item {
+    display: grid;
+    gap: 2px;
+    width: 100%;
+    padding: 8px 10px;
+    background: transparent;
+    color: var(--fg);
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.chat-list-item:hover { background: var(--panel-hi); }
+.chat-list-item[aria-current="true"] { background: var(--panel-hi); box-shadow: inset 2px 0 0 var(--accent); }
+.chat-list-new { color: var(--accent); }
+.chat-list-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chat-list-meta { font-size: 12px; color: var(--fg-dim); }
+
+.chat-body {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+}
+deep-chat {
+    display: block;
+    flex: 1;
+    min-width: 0;
+}
+.chat-pending {
+    margin: 20px;
+    color: var(--fg-dim);
+    font: 13px var(--mono);
+}
+
+/* Burger: three bars that fold into a cross while its drawer is open. */
+.chat-burger {
+    display: none;
+    position: relative;
+    flex: none;
+    width: 36px;
+    height: 34px;
+    padding: 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-hi);
+    border-radius: 6px;
+    cursor: pointer;
+}
+.chat-burger > span:not(.chat-status-dot) {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--fg);
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.chat-burger > span:nth-child(1) { top: 15px; transform: translateY(-5px); }
+.chat-burger > span:nth-child(2) { top: 15px; }
+.chat-burger > span:nth-child(3) { top: 15px; transform: translateY(5px); }
+.chat-burger[aria-expanded="true"] { border-color: var(--accent); }
+.chat-burger[aria-expanded="true"] > span:nth-child(1) { transform: rotate(45deg); }
+.chat-burger[aria-expanded="true"] > span:nth-child(2) { opacity: 0; }
+.chat-burger[aria-expanded="true"] > span:nth-child(3) { transform: rotate(-45deg); }
+
+.chat-status-dot {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--err);
+    box-shadow: 0 0 0 2px var(--panel);
+}
+body[data-robot="connected"]  .chat-status-dot { background: var(--ok); }
+body[data-robot="connecting"] .chat-status-dot { background: var(--warn); }
+
+/* Layout toggle, in the console header. */
+.chat-layout-toggle {
+    display: inline-flex;
+    align-items: center;
+}
+.chat-layout-toggle::before {
+    content: "layout";
+    color: var(--fg-dim);
+    font-size: 12px;
+    margin-right: 8px;
+}
+.chat-layout-toggle button:first-of-type { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.chat-layout-toggle button:last-of-type  { border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -1px; }
+.chat-layout-toggle button[aria-pressed="true"] {
+    position: relative;   /* lift the accent border over the neighbour's */
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--panel-hi);
+}
+
+/* Phone side sheet; hidden on desktop. */
+.chat-drawer,
+.chat-scrim { display: none; }
+
+/* ---- Desktop ---- */
+
+@media (min-width: 761px) {
+    body[data-chat-layout="side"] {
+        grid-template-columns: 380px minmax(360px, 1fr) minmax(280px, 0.8fr);
+        grid-template-areas:
+            "header   header header"
+            "controls chat   log";
+    }
+    body[data-chat-layout="centre"] {
+        grid-template-columns: minmax(0, 1fr) 340px;
+        grid-template-areas:
+            "header header"
+            "chat   log";
+    }
+    body[data-chat-layout="centre"] .chat-body {
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    /* Centre: the burger opens the controls as a drawer. */
+    body[data-chat-layout="centre"] header .chat-burger { display: inline-block; }
+    body[data-chat-layout="centre"] .controls {
+        position: fixed;
+        top: var(--chat-top, 57px);
+        bottom: 0;
+        left: 0;
+        width: 380px;
+        box-sizing: border-box;
+        background: var(--bg);
+        z-index: 30;
+        box-shadow: 12px 0 32px rgba(0, 0, 0, 0.5);
+        transform: translateX(calc(-100% - 60px));
+        visibility: hidden;
+        transition: transform 0.18s ease, visibility 0.18s;
+    }
+    body[data-chat-layout="centre"].drawer-menu .controls {
+        transform: none;
+        visibility: visible;
+    }
+
+    /* Dims what an open drawer covers; clicking it closes the drawer. */
+    body.drawer-menu .chat-scrim,
+    body.drawer-log .chat-scrim {
+        display: block;
+        position: fixed;
+        top: var(--chat-top, 57px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 25;
+    }
+}
+
+/* Narrow desktop: the log moves into a drawer. */
+@media (min-width: 761px) and (max-width: 1100px) {
+    body[data-chat-layout="side"] {
+        grid-template-columns: 340px minmax(0, 1fr);
+        grid-template-areas:
+            "header   header"
+            "controls chat";
+    }
+    body[data-chat-layout="centre"] {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "header"
+            "chat";
+    }
+    body[data-chat-layout] .chat { border-right: 0; }
+    body[data-chat-layout] .chat-log-btn { display: inline-block; }
+    body[data-chat-layout] .log {
+        position: fixed;
+        top: var(--chat-top, 57px);
+        bottom: 0;
+        right: 0;
+        width: min(460px, 100vw);
+        box-sizing: border-box;
+        background: var(--bg);
+        z-index: 30;
+        border-left: 1px solid var(--panel-hi);
+        box-shadow: -12px 0 32px rgba(0, 0, 0, 0.5);
+        transform: translateX(calc(100% + 60px));
+        visibility: hidden;
+        transition: transform 0.18s ease, visibility 0.18s;
+    }
+    body[data-chat-layout].drawer-log .log {
+        transform: none;
+        visibility: visible;
+    }
+}
+
+/* ---- Phone ----
+ *
+ * One bar on screen, the chat's: burger (with the robot's connection state
+ * as a dot), chat switcher, new chat, log. The burger opens a side sheet with
+ * the connection fields and, in centre, the controls, all in one scroll.
+ *
+ *   centre  the chat is the page
+ *   side    the controls are the page, the chat is docked beneath them
+ *   log     swaps the area under the bar for the event log
+ */
+
+@media (max-width: 760px) {
+    body[data-chat-layout] {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    body[data-chat-layout] .chat-head { padding: 8px 12px; }
+    body[data-chat-layout] .chat-head-burger { display: inline-block; }
+    body[data-chat-layout] .chat-head .chat-badge { display: none; }
+    body[data-chat-layout] .chat-switch { flex: 1; max-width: none; }
+    body[data-chat-layout] .chat-log-btn { display: inline-block; }
+    body[data-chat-layout] .chat-head-actions { margin-left: 0; }
+
+    /* Centre: the chat fills the screen. */
+    body[data-chat-layout="centre"] .chat { flex: 1; border-right: 0; }
+
+    /* Side: controls on top, chat docked beneath as a panel. */
+    body[data-chat-layout="side"] .controls {
+        order: 1;
+        flex: 1 1 0;
+        min-height: 0;
+        border-right: 0;
+    }
+    body[data-chat-layout="side"] .chat {
+        order: 2;
+        flex: 0 0 58%;
+        border-right: 0;
+        border-top: 1px solid var(--panel-hi);
+        box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Log: replaces the area under the chat bar, like a tab. */
+    body[data-chat-layout] .log {
+        position: fixed;
+        top: var(--chat-bar-bottom, 50px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 15;
+        background: var(--bg);
+        visibility: hidden;
+    }
+    body[data-chat-layout].drawer-log .log { visibility: visible; }
+
+    /* Side sheet. Not sticky anywhere inside: it scrolls as one piece. */
+    body[data-chat-layout] .chat-drawer {
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: min(380px, 88vw);
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        background: var(--bg);
+        border-right: 1px solid var(--panel-hi);
+        box-shadow: 12px 0 32px rgba(0, 0, 0, 0.5);
+        z-index: 40;
+        transform: translateX(-105%);
+        visibility: hidden;
+        transition: transform 0.2s ease, visibility 0.2s;
+    }
+    body[data-chat-layout].drawer-menu .chat-drawer {
+        transform: none;
+        visibility: visible;
+    }
+    body[data-chat-layout].drawer-menu .chat-scrim {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 35;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .chat-drawer-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--panel-hi);
+    }
+    .chat-drawer-title { font-weight: 600; }
+    .chat-drawer-close { margin-left: auto; }
+
+    /* The console header and controls, once moved into the sheet. */
+    .chat-drawer header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+    .chat-drawer header .chat-burger { display: none; }
+    .chat-drawer header input { flex: 1 1 110px; min-width: 0; }
+    .chat-drawer header #port { flex: 0 1 64px; }
+    .chat-drawer .controls {
+        overflow: visible;
+        border-right: 0;
+    }
+}

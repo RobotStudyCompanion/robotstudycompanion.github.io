@@ -595,3 +595,298 @@ footer a:hover {
 .highlight-card.link:hover {
   background-color: #dceeff;
 }
+
+
+/* =========================
+   BLOG / NEWS
+========================= */
+
+.blog-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+
+/* Post card */
+
+.blog-card {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+
+/* Image */
+
+.blog-card > img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Text underneath */
+
+.blog-card-info {
+    padding: 1rem;
+}
+
+.blog-card-info span {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.blog-card-info h3 {
+    margin: 0.3rem 0 0;
+    color: #0156a7;
+}
+
+
+/* Hover overlay */
+
+.blog-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 86, 167, 0.88);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+
+/* Orange plus */
+
+.blog-hover span {
+    color: #ff9E4A;
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+
+/* Hover */
+
+.blog-card:hover .blog-hover {
+    opacity: 1;
+}
+
+
+/* Slight movement */
+
+.blog-card {
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.blog-modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.25s ease,
+                visibility 0.25s ease;
+
+    z-index: 10000;
+}
+
+.blog-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Modal box */
+
+.blog-modal-content {
+    position: relative;
+
+    width: min(850px, 100%);
+    max-height: 92vh;
+
+    background: #ffffff;
+    border-radius: 10px;
+
+    overflow-y: auto;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+
+/* Main image */
+
+.blog-modal-content > img {
+    width: 100%;
+    max-height: 450px;
+
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Body */
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-date {
+    color: #666666;
+    margin-bottom: 0.3rem;
+}
+
+.modal-body h2 {
+    margin-top: 0;
+    color: #0156a7;
+}
+
+
+/* Close X */
+
+.modal-close {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #0156a7;
+    color: white;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+.modal-close:hover {
+    background: #ff9E4A;
+    color: #000000;
+}
+
+
+/* Bottom close button */
+
+.close-post {
+    display: block;
+
+    margin: 0 auto 2rem;
+
+    padding: 0.7rem 1.5rem;
+
+    background: #0156a7;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+}
+
+.close-post:hover {
+    background: #ff9E4A;
+    color: #000000;
+}
+
+
+/* Hidden post bodies */
+
+.hidden-post {
+    display: none;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .blog-container {
+        padding: 1.2rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .blog-card > img {
+        aspect-ratio: 16 / 10;
+    }
+
+    .blog-hover span {
+        font-size: 4rem;
+    }
+
+    .blog-modal {
+        padding: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .blog-modal-content {
+        margin-top: 0.5rem;
+        max-height: 96vh;
+    }
+
+    .modal-body {
+        padding: 1.2rem;
+    }
+
+}

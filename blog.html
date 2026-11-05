@@ -1,34 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBX47MQ0SS"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-XBX47MQ0SS');
+<head>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBX47MQ0SS"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-XBX47MQ0SS');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+
+    <meta name="description" id="metaDescription"
+          content="Follow the Robot Study Companion through project updates, events, research, milestones and other news.">
+
+    <!-- Open Graph metadata for social sharing -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="ogTitle" content="RSC Blog">
+    <meta property="og:description" id="ogDescription"
+          content="Follow the Robot Study Companion through project updates, events, research, milestones and other news.">
+    <meta property="og:image" id="ogImage" content="">
+    <meta property="og:url" id="ogUrl" content="">
+
+    <!-- Twitter / X metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitterTitle" content="RSC Blog">
+    <meta name="twitter:description" id="twitterDescription"
+          content="Follow the Robot Study Companion through project updates, events, research, milestones and other news.">
+    <meta name="twitter:image" id="twitterImage" content="">
+
+    <title>Blog | Robot Study Companion</title>
+
     <link rel="stylesheet" href="styles.css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="favicon_io/site.webmanifest">    
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="favicon_io/apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="favicon_io/favicon-32x32.png">
+
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="favicon_io/favicon-16x16.png">
+
+    <link rel="manifest" href="favicon_io/site.webmanifest">
 
 </head>
+
+
 <body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header>
+
         <a href="index.html" class="logo-link">
             <img src="rsc-logo.png" alt="RSC Logo">
         </a>
-        <!-- Desktop nav (unchanged) -->
+
         <nav class="nav-desktop">
+
             <a href="index.html">Home</a>
             <a href="research.html">Research</a>
             <a href="thesis-topics.html">Thesis Topics</a>
@@ -36,15 +78,38 @@
             <a href="docs.html">Docs</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html">Team</a>
+
         </nav>
+
         <!-- Mobile burger -->
-        <button class="burger" id="burgerBtn" aria-label="Menu">
+
+        <button class="burger"
+                id="burgerBtn"
+                aria-label="Open menu"
+                aria-controls="mobileMenu"
+                aria-expanded="false">
+
             ☰
+
         </button>
+
     </header>
-    <!-- Mobile overlay menu -->
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================= -->
+
     <div class="mobile-menu" id="mobileMenu">
-        <button class="close-menu" id="closeMenu">✕</button>
+
+        <button class="close-menu"
+                id="closeMenu"
+                aria-label="Close menu">
+
+            ✕
+
+        </button>
+
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
         <a href="thesis-topics.html">Thesis Topics</a>
@@ -52,406 +117,753 @@
         <a href="docs.html">Docs</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Team</a>
+
     </div>
 
-<main class="blog-container">
 
-    <h2>📰 Blog & News</h2>
+    <!-- =========================
+         BLOG CONTENT
+    ========================= -->
 
-    <p>
-        Follow the Robot Study Companion through project updates,
-        events, research, milestones and other news.
-    </p>
+    <main class="blog-container">
 
+        <h2>📰 Blog &amp; News</h2>
 
-    <section class="blog-grid">
-
-        <!-- POST 1 -->
-        <article class="blog-card"
-                 data-title="RSC at IEEE RO-MAN 2025"
-                 data-date="August 2025"
-                 data-image="media/blog/roman2025.jpg"
-                 data-content="post1">
-
-            <img src="media/blog/roman2025.jpg"
-                 alt="RSC at IEEE RO-MAN 2025">
-
-            <div class="blog-card-info">
-                <span>August 2025</span>
-                <h3>RSC at IEEE RO-MAN 2025</h3>
-            </div>
-
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+        <p>
+            Follow the Robot Study Companion through project updates,
+            events, research, milestones and other news.
+        </p>
 
 
-        <!-- POST 2 -->
-        <article class="blog-card"
-                 data-title="Building the RSC v4"
-                 data-date="2025"
-                 data-image="media/blog/rsc-v4.jpg"
-                 data-content="post2">
+        <!-- Blog cards generated from JSON -->
 
-            <img src="media/blog/rsc-v4.jpg"
-                 alt="Building RSC v4">
+        <section class="blog-grid" id="blogGrid"
+                 aria-label="Blog posts">
 
-            <div class="blog-card-info">
-                <span>2025</span>
-                <h3>Building the RSC v4</h3>
-            </div>
+            <p class="blog-loading" role="status">
+                Loading blog posts...
+            </p>
 
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+        </section>
+
+    </main>
 
 
-        <!-- POST 3 -->
-        <article class="blog-card"
-                 data-title="RSC Summer School"
-                 data-date="July 2026"
-                 data-image="media/blog/summer-school.jpg"
-                 data-content="post3">
+    <!-- =========================
+         BLOG MODAL
+    ========================= -->
 
-            <img src="media/blog/summer-school.jpg"
-                 alt="RSC Summer School">
+    <div class="blog-modal"
+         id="blogModal"
+         aria-hidden="true">
 
-            <div class="blog-card-info">
-                <span>July 2026</span>
-                <h3>RSC Summer School</h3>
-            </div>
+        <div class="blog-modal-content"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modalTitle">
 
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+            <!-- Close button -->
 
+            <button class="modal-close"
+                    id="modalClose"
+                    aria-label="Close post">
 
-        <!-- POST 4 -->
-        <article class="blog-card"
-                 data-title="Open Source Hardware"
-                 data-date="2024"
-                 data-image="media/blog/oshwa.jpg"
-                 data-content="post4">
+                ✕
 
-            <img src="media/blog/oshwa.jpg"
-                 alt="RSC Open Source Hardware">
-
-            <div class="blog-card-info">
-                <span>2024</span>
-                <h3>Open Source Hardware</h3>
-            </div>
-
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+            </button>
 
 
-        <!-- POST 5 -->
-        <article class="blog-card"
-                 data-title="Students Building with RSC"
-                 data-date="2024"
-                 data-image="media/blog/students.jpg"
-                 data-content="post5">
+            <!-- Main image -->
 
-            <img src="media/blog/students.jpg"
-                 alt="Students working with RSC">
-
-            <div class="blog-card-info">
-                <span>2024</span>
-                <h3>Students Building with RSC</h3>
-            </div>
-
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+            <img id="modalImage" src="" alt="">
 
 
-        <!-- POST 6 -->
-        <article class="blog-card"
-                 data-title="RSC in Guyana"
-                 data-date="2023"
-                 data-image="media/blog/guyana.jpg"
-                 data-content="post6">
+            <!-- Article information -->
 
-            <img src="media/blog/guyana.jpg"
-                 alt="RSC in Guyana">
+            <div class="modal-body">
 
-            <div class="blog-card-info">
-                <span>2023</span>
-                <h3>RSC in Guyana</h3>
-            </div>
+                <p class="modal-date" id="modalDate"></p>
 
-            <div class="blog-hover">
-                <span>+</span>
-            </div>
-        </article>
+                <div class="modal-title-row">
 
-    </section>
+                    <h2 id="modalTitle"></h2>
 
-</main>
+                    <button class="blog-share-button modal-share-button"
+                            id="modalShare"
+                            type="button"
+                            aria-label="Share this blog post"
+                            title="Share this blog post">
 
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20" height="20" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
+                            <line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line>
+                        </svg>
 
-<!-- =========================
-     MODAL / POP-UP
-========================= -->
+                    </button>
 
-<div class="blog-modal" id="blogModal" aria-hidden="true">
+                </div>
 
-    <div class="blog-modal-content">
+                <div id="modalContent"
+                     class="modal-content-text">
 
-        <!-- Close X -->
-        <button class="modal-close"
-                id="modalClose"
-                aria-label="Close post">
-            ✕
-        </button>
+                </div>
 
-        <img id="modalImage" src="" alt="">
-
-        <div class="modal-body">
-
-            <p class="modal-date" id="modalDate"></p>
-
-            <h2 id="modalTitle"></h2>
-
-            <!-- POST CONTENT -->
-
-            <div id="post1" class="hidden-post">
-                <p>
-                    The Robot Study Companion took part in IEEE RO-MAN 2025,
-                    bringing together members of the RSC team for the robot
-                    design competition and research presentations.
-                </p>
-
-                <p>
-                    Farnaz Baksh presented at the Robots for Humans workshop,
-                    while Farnaz Baksh and Matevž Zorec represented the RSC
-                    team in the robot design competition.
-                </p>
-
-                <p>
-                    The team received the Best Technical Design Award.
-                </p>
             </div>
 
 
-            <div id="post2" class="hidden-post">
-                <p>
-                    RSC v4 brings together lessons learned from previous
-                    prototypes with a focus on affordability, repairability
-                    and open hardware.
-                </p>
+            <!-- Bottom close button -->
 
-                <p>
-                    The build documentation is available through the RSC Docs
-                    page.
-                </p>
-            </div>
+            <button class="close-post" id="closePost">
 
+                Close Post
 
-            <div id="post3" class="hidden-post">
-                <p>
-                    The RSC Summer School introduces students to human-robot
-                    interaction and social robotics through hands-on design,
-                    programming and prototyping.
-                </p>
-
-                <p>
-                    Students work in multidisciplinary groups to develop
-                    robotic applications addressing real-world challenges.
-                </p>
-            </div>
-
-
-            <div id="post4" class="hidden-post">
-                <p>
-                    The Robot Study Companion is developed as an open-source
-                    hardware platform, allowing students and researchers to
-                    inspect, modify and build upon the system.
-                </p>
-            </div>
-
-
-            <div id="post5" class="hidden-post">
-                <p>
-                    Students have contributed to the RSC through theses,
-                    software development, hardware work, testing and
-                    documentation.
-                </p>
-            </div>
-
-
-            <div id="post6" class="hidden-post">
-                <p>
-                    The RSC project has involved collaboration with students
-                    and researchers in Guyana, including work with the
-                    University of Guyana.
-                </p>
-            </div>
+            </button>
 
         </div>
 
-        <!-- Bottom close -->
-        <button class="close-post" id="closePost">
-            Close Post
-        </button>
-
     </div>
 
-</div>
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-logos">
+
+            <img src="media/unitartu.png"
+                 alt="University of Tartu">
+
+            <img src="media/uniguyana-white.png"
+                 alt="University of Guyana">
+
+        </div>
 
 
-<footer>
-    <div class="footer-logos">
-        <img src="media/unitartu.png" alt="University of Tartu">
-        <img src="media/uniguyana-white.png" alt="University of Guyana">
-    </div>
+        <div class="footer-text">
 
-    <div class="footer-text">
-        <p>
-            &copy; 2026 RSC |
-            <a href="https://github.com/RobotStudyCompanion/" target="_blank">
-                GitHub Repository 💻
-            </a>
-        </p>
-    </div>
+            <p>
 
-    <div class="footer-logos">
-        <img src="media/oshw-logo-outlined.png" alt="Open Source Hardware">
-    </div>
-</footer>
+                &copy; 2026 RSC |
+
+                <a href="https://github.com/RobotStudyCompanion/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    GitHub Repository 💻
+
+                </a>
+
+            </p>
+
+        </div>
 
 
-<script>
-    /* =========================
-       BLOG MODAL
-    ========================= */
+        <div class="footer-logos">
 
-    const blogCards = document.querySelectorAll('.blog-card');
+            <img src="media/oshw-logo-outlined.png"
+                 alt="Open Source Hardware">
 
-    const modal = document.getElementById('blogModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDate = document.getElementById('modalDate');
-    const modalImage = document.getElementById('modalImage');
+        </div>
 
-    const modalClose = document.getElementById('modalClose');
-    const closePost = document.getElementById('closePost');
+    </footer>
 
 
-    function openPost(card) {
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-        const title = card.dataset.title;
-        const date = card.dataset.date;
-        const image = card.dataset.image;
-        const contentId = card.dataset.content;
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
 
-        modalTitle.textContent = title;
-        modalDate.textContent = date;
+    <script>
 
-        modalImage.src = image;
-        modalImage.alt = title;
+        /* =========================
+           DYNAMIC BLOG SYSTEM
+        ========================= */
+
+        const blogGrid = document.getElementById('blogGrid');
+        const modal = document.getElementById('blogModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalImage = document.getElementById('modalImage');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+        const closePostButton = document.getElementById('closePost');
+        const modalShare = document.getElementById('modalShare');
+
+        const defaultDocumentTitle = document.title;
+        const defaultDescription =
+            document.getElementById('metaDescription').content;
+
+        let loadedPosts = [];
+        let activePost = null;
+        let lastFocusedElement = null;
 
 
-        /* Hide all post content */
+        /* =========================
+           POST URLS
+        ========================= */
 
-        document.querySelectorAll('.hidden-post').forEach(post => {
-            post.style.display = 'none';
+        // Example: blog.html?post=oshwa-certified
+        function getPostUrl(postId) {
+
+            const url = new URL(window.location.href);
+            url.searchParams.set('post', postId);
+
+            return url.href;
+
+        }
+
+
+        /* =========================
+           SEO / SOCIAL METADATA
+        ========================= */
+
+        function updatePostMetadata(post) {
+
+            const description = post.excerpt || post.title;
+            const imageUrl = new URL(post.image, document.baseURI).href;
+            const postUrl = getPostUrl(post.id);
+
+            document.title = `${post.title} | RSC Blog`;
+
+            document.getElementById('metaDescription').content = description;
+
+            document.getElementById('ogTitle').content = post.title;
+            document.getElementById('ogDescription').content = description;
+            document.getElementById('ogImage').content = imageUrl;
+            document.getElementById('ogUrl').content = postUrl;
+
+            document.getElementById('twitterTitle').content = post.title;
+            document.getElementById('twitterDescription').content = description;
+            document.getElementById('twitterImage').content = imageUrl;
+
+        }
+
+
+        function resetPostMetadata() {
+
+            document.title = defaultDocumentTitle;
+            document.getElementById('metaDescription').content = defaultDescription;
+
+            document.getElementById('ogTitle').content = 'RSC Blog';
+            document.getElementById('ogDescription').content = defaultDescription;
+            document.getElementById('ogImage').content = '';
+            document.getElementById('ogUrl').content =
+                `${window.location.origin}${window.location.pathname}`;
+
+            document.getElementById('twitterTitle').content = 'RSC Blog';
+            document.getElementById('twitterDescription').content = defaultDescription;
+            document.getElementById('twitterImage').content = '';
+
+        }
+
+
+        /* =========================
+           SHARING
+        ========================= */
+
+        function createShareButton(className, label) {
+
+            const button = document.createElement('button');
+
+            button.type = 'button';
+            button.className = className;
+            button.setAttribute('aria-label', label);
+            button.title = label;
+
+            button.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="20" height="20" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
+                    <line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line>
+                </svg>
+            `;
+
+            return button;
+
+        }
+
+
+        async function sharePost(post) {
+
+            const url = getPostUrl(post.id);
+
+            const shareData = {
+                title: post.title,
+                text: post.excerpt || post.title,
+                url: url
+            };
+
+            // Use the device's native share menu where supported.
+            if (navigator.share) {
+
+                try {
+                    await navigator.share(shareData);
+                    return;
+                } catch (error) {
+                    // Do not show an error if the visitor cancels sharing.
+                    if (error.name === 'AbortError') {
+                        return;
+                    }
+                }
+
+            }
+
+            // Fallback: copy the link to the clipboard.
+            try {
+
+                await navigator.clipboard.writeText(url);
+                alert('Blog post link copied to clipboard!');
+
+            } catch (error) {
+
+                window.prompt('Copy this blog post link:', url);
+
+            }
+
+        }
+
+
+        /* =========================
+           LOAD BLOG POSTS
+        ========================= */
+
+        async function loadBlogPosts() {
+
+            try {
+
+                const indexResponse = await fetch('blog-posts/index.json');
+
+                if (!indexResponse.ok) {
+                    throw new Error('Unable to load blog index');
+                }
+
+                const postIds = await indexResponse.json();
+
+                if (!Array.isArray(postIds)) {
+                    throw new Error('blog-posts/index.json must contain an array of post IDs');
+                }
+
+                // Load each JSON file listed in index.json.
+                const posts = await Promise.all(
+
+                    postIds.map(async id => {
+
+                        const response = await fetch(
+                            `blog-posts/${encodeURIComponent(id)}.json`
+                        );
+
+                        if (!response.ok) {
+                            throw new Error(`Unable to load ${id}.json`);
+                        }
+
+                        const post = await response.json();
+
+                        if (!post.id || post.id !== id) {
+                            throw new Error(
+                                `The post ID in ${id}.json must match its index.json entry`
+                            );
+                        }
+
+                        return post;
+
+                    })
+
+                );
+
+                loadedPosts = posts;
+                blogGrid.replaceChildren();
+
+                posts.forEach(post => createBlogCard(post));
+
+                if (posts.length === 0) {
+                    blogGrid.textContent = 'No blog posts available yet.';
+                }
+
+                // If the page URL contains ?post=..., open that article.
+                openPostFromUrl();
+
+            } catch (error) {
+
+                console.error('Blog loading error:', error);
+
+                blogGrid.textContent =
+                    'Unable to load blog posts. Please try again later.';
+
+            }
+
+        }
+
+
+        /* =========================
+           CREATE BLOG CARD
+        ========================= */
+
+        function createBlogCard(post) {
+
+            const card = document.createElement('article');
+            card.className = 'blog-card';
+            card.tabIndex = 0;
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Read ${post.title}`);
+
+            // Featured image.
+            const image = document.createElement('img');
+            image.src = post.image;
+            image.alt = post.alt || post.title;
+            image.loading = 'lazy';
+
+            // Card information.
+            const info = document.createElement('div');
+            info.className = 'blog-card-info';
+
+            // Publication date.
+            const date = document.createElement('span');
+            date.textContent = post.date || '';
+
+            // Blog post title.
+            const title = document.createElement('h3');
+            title.textContent = post.title;
+
+            info.append(date, title);
+
+            // Short description from the JSON excerpt field.
+            if (post.excerpt) {
+
+                const excerpt = document.createElement('p');
+                excerpt.className = 'blog-card-excerpt';
+
+                excerpt.appendChild(
+                    document.createTextNode(`${post.excerpt} `)
+                );
+
+                // Read More links to the post's unique URL.
+                const readMore = document.createElement('a');
+                readMore.className = 'blog-read-more';
+                readMore.href = getPostUrl(post.id);
+                readMore.textContent = 'Read More';
+                readMore.setAttribute('aria-label', `Read more: ${post.title}`);
+
+                readMore.addEventListener('click', event => {
+
+                    // Preserve normal browser behaviour for opening in a new tab.
+                    if (
+                        event.metaKey || event.ctrlKey ||
+                        event.shiftKey || event.altKey
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    event.stopPropagation();
+                    openPost(post);
+
+                });
+
+                excerpt.appendChild(readMore);
+                info.appendChild(excerpt);
+
+            }
+
+            // Share icon on the card.
+            const shareButton = createShareButton(
+                'blog-share-button blog-card-share',
+                `Share ${post.title}`
+            );
+
+            shareButton.addEventListener('click', event => {
+                event.stopPropagation();
+                sharePost(post);
+            });
+
+            // Hover overlay with the existing open-book icon.
+            const hover = document.createElement('div');
+            hover.className = 'blog-hover';
+            hover.setAttribute('aria-hidden', 'true');
+
+            hover.innerHTML = `
+                <svg class="blog-read-icon"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M12 7v14"/>
+                    <path d="
+                        M3 18V5
+                        a2 2 0 0 1 2-2
+                        h4a3 3 0 0 1 3 3
+                        a3 3 0 0 1 3-3
+                        h4a2 2 0 0 1 2 2
+                        v13a2 2 0 0 1-2 2
+                        h-4a3 3 0 0 0-3 2
+                        a3 3 0 0 0-3-2
+                        H5a2 2 0 0 1-2-2z
+                    "/>
+                </svg>
+            `;
+
+            // Assemble the card.
+            card.append(image, shareButton, info, hover);
+
+            // Open article when clicking the card, except on links/buttons.
+            card.addEventListener('click', event => {
+
+                if (event.target.closest('a, button')) {
+                    return;
+                }
+
+                openPost(post);
+
+            });
+
+            // Keyboard accessibility for the card itself.
+            card.addEventListener('keydown', event => {
+
+                if (event.target !== card) {
+                    return;
+                }
+
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openPost(post);
+                }
+
+            });
+
+            blogGrid.appendChild(card);
+
+        }
+
+
+        /* =========================
+           OPEN BLOG POST
+        ========================= */
+
+        function openPost(post, updateHistory = true) {
+
+            // Save focus only when opening the modal for the first time.
+            if (!modal.classList.contains('open')) {
+                lastFocusedElement = document.activeElement;
+            }
+
+            activePost = post;
+
+            // Update the URL so this post can be copied and shared.
+            if (updateHistory) {
+
+                const currentPostId =
+                    new URLSearchParams(window.location.search).get('post');
+
+                if (currentPostId !== post.id) {
+                    history.pushState(
+                        { blogPostId: post.id },
+                        '',
+                        getPostUrl(post.id)
+                    );
+                }
+
+            }
+
+            updatePostMetadata(post);
+
+            modalTitle.textContent = post.title;
+            modalDate.textContent = post.date || '';
+
+            modalImage.src = post.image;
+            modalImage.alt = post.alt || post.title;
+
+            // Support both the original content array and Markdown string.
+            const markdownContent = Array.isArray(post.content)
+                ? post.content.join('\n\n')
+                : post.content || '';
+
+            // Marked converts Markdown; DOMPurify sanitises the resulting HTML.
+            modalContent.innerHTML = DOMPurify.sanitize(
+                marked.parse(markdownContent)
+            );
+
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+
+            modalClose.focus();
+
+        }
+
+
+        /* =========================
+           OPEN POST FROM URL
+        ========================= */
+
+        function openPostFromUrl() {
+
+            const postId =
+                new URLSearchParams(window.location.search).get('post');
+
+            if (!postId) {
+                return;
+            }
+
+            const post = loadedPosts.find(item => item.id === postId);
+
+            if (post) {
+                openPost(post, false);
+            } else {
+                console.warn(`No blog post found with ID: ${postId}`);
+            }
+
+        }
+
+
+        /* =========================
+           CLOSE BLOG POST
+        ========================= */
+
+        function closeModal(updateHistory = true) {
+
+            if (!modal.classList.contains('open')) {
+                return;
+            }
+
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+
+            // Remove the post query parameter when the visitor closes the modal.
+            if (updateHistory) {
+
+                const url = new URL(window.location.href);
+                url.searchParams.delete('post');
+
+                history.replaceState(history.state, '', url.href);
+
+            }
+
+            activePost = null;
+            resetPostMetadata();
+
+            if (lastFocusedElement && lastFocusedElement.isConnected) {
+                lastFocusedElement.focus();
+            }
+
+        }
+
+
+        // Share button inside the opened article.
+        modalShare.addEventListener('click', () => {
+
+            if (activePost) {
+                sharePost(activePost);
+            }
+
         });
 
 
-        /* Show selected post */
+        modalClose.addEventListener('click', () => closeModal());
+        closePostButton.addEventListener('click', () => closeModal());
 
-        const selectedPost = document.getElementById(contentId);
+        // Clicking the dark overlay closes the article.
+        modal.addEventListener('click', event => {
 
-        if (selectedPost) {
-            selectedPost.style.display = 'block';
-        }
+            if (event.target === modal) {
+                closeModal();
+            }
 
-
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-
-        document.body.classList.add('modal-open');
-    }
-
-
-    function closeModal() {
-
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-
-        document.body.classList.remove('modal-open');
-    }
-
-
-    blogCards.forEach(card => {
-
-        card.addEventListener('click', () => {
-            openPost(card);
         });
 
-    });
+        // Escape key closes the article.
+        document.addEventListener('keydown', event => {
+
+            if (event.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+
+        });
+
+        // Browser Back / Forward updates the currently displayed article.
+        window.addEventListener('popstate', () => {
+
+            const postId =
+                new URLSearchParams(window.location.search).get('post');
+
+            if (postId) {
+
+                const post = loadedPosts.find(item => item.id === postId);
+
+                if (post) {
+                    openPost(post, false);
+                } else {
+                    closeModal(false);
+                }
+
+            } else {
+                closeModal(false);
+            }
+
+        });
 
 
-    modalClose.addEventListener('click', closeModal);
-    closePost.addEventListener('click', closeModal);
+        /* =========================
+           MOBILE BURGER MENU
+        ========================= */
 
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
 
-    /* Click outside post */
+        burgerBtn.addEventListener('click', () => {
 
-    modal.addEventListener('click', event => {
+            mobileMenu.classList.add('open');
+            burgerBtn.setAttribute('aria-expanded', 'true');
 
-        if (event.target === modal) {
-            closeModal();
-        }
+        });
 
-    });
+        closeMenu.addEventListener('click', () => {
 
-
-    /* Escape key */
-
-    document.addEventListener('keydown', event => {
-
-        if (event.key === 'Escape') {
-            closeModal();
-        }
-
-    });
-
-
-    /* =========================
-       MOBILE BURGER MENU
-    ========================= */
-
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-
-    burgerBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('open');
-    });
-
-
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-    });
-
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-
-        link.addEventListener('click', () => {
             mobileMenu.classList.remove('open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            burgerBtn.focus();
+
         });
 
-    });
+        mobileMenu.querySelectorAll('a').forEach(link => {
 
-</script>
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+            });
+
+        });
+
+
+        /* =========================
+           START BLOG
+        ========================= */
+
+        loadBlogPosts();
+
+    </script>
 
 </body>
+
 </html>

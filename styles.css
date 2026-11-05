@@ -607,37 +607,47 @@ footer a:hover {
     padding: 2rem;
 }
 
+
+/* Blog grid */
+
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
 
-/* Post card */
+/* =========================
+   BLOG CARDS
+========================= */
 
 .blog-card {
     position: relative;
     overflow: hidden;
+
     background: #ffffff;
     border-radius: 8px;
+
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
-
-
-/* Image */
 
 .blog-card > img {
     width: 100%;
     aspect-ratio: 4 / 3;
-    object-fit: cover;
+
+    object-fit: contain;
+    background-color: #f2f2f2;
     display: block;
 }
 
-
-/* Text underneath */
+/* Card information */
 
 .blog-card-info {
     padding: 1rem;
@@ -654,11 +664,31 @@ footer a:hover {
 }
 
 
-/* Hover overlay */
+/* Card hover movement */
+
+.blog-card:hover,
+.blog-card:focus-visible {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.15);
+}
+
+
+/* Keyboard focus */
+
+.blog-card:focus-visible {
+    outline: 3px solid #ff9E4A;
+    outline-offset: 3px;
+}
+
+
+/* =========================  HOVER OVERLAY ========================= */
 
 .blog-hover {
     position: absolute;
     inset: 0;
+
     background: rgba(1, 86, 167, 0.88);
 
     display: flex;
@@ -666,43 +696,43 @@ footer a:hover {
     justify-content: center;
 
     opacity: 0;
+
     transition: opacity 0.25s ease;
+
+    pointer-events: none;
 }
 
 
-/* Orange plus */
+/* Show overlay */
 
-.blog-hover span {
-    color: #ff9E4A;
-    font-size: 5rem;
-    font-weight: 300;
-    line-height: 1;
-}
-
-
-/* Hover */
-
-.blog-card:hover .blog-hover {
+.blog-card:hover .blog-hover,
+.blog-card:focus-visible .blog-hover {
     opacity: 1;
 }
 
 
-/* Slight movement */
-
-.blog-card {
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
-}
-
-.blog-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+/* Open book icon */
+.blog-read-icon {
+    width: 38px;
+    height: 38px;
+    color: #ff9E4A;
+    transition: transform 0.3s ease;
 }
 
 
-/* =========================
-   MODAL
-========================= */
+/* Book animation */
+.blog-card:hover .blog-read-icon,
+.blog-card:focus-visible .blog-read-icon {
+    transform: scale(1.15);
+}
+
+
+/* Loading message */
+.blog-loading {
+    grid-column: 1 / -1;
+}
+
+/* =========================  MODAL ========================= */
 
 body.modal-open {
     overflow: hidden;
@@ -723,17 +753,19 @@ body.modal-open {
     opacity: 0;
     visibility: hidden;
 
-    transition: opacity 0.25s ease,
-                visibility 0.25s ease;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
 
     z-index: 10000;
 }
+
+/* Show modal */
 
 .blog-modal.open {
     opacity: 1;
     visibility: visible;
 }
-
 
 /* Modal box */
 
@@ -748,31 +780,30 @@ body.modal-open {
 
     overflow-y: auto;
 
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.3);
 }
-
-
-/* Main image */
 
 .blog-modal-content > img {
     width: 100%;
     max-height: 450px;
 
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f2f2f2;
     display: block;
 }
 
-
-/* Body */
-
+/* Modal body */
 .modal-body {
     padding: 2rem;
 }
+
 
 .modal-date {
     color: #666666;
     margin-bottom: 0.3rem;
 }
+
 
 .modal-body h2 {
     margin-top: 0;
@@ -780,27 +811,29 @@ body.modal-open {
 }
 
 
-/* Close X */
+/* Article paragraphs */
 
+.modal-content-text p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+
+/* ========================= CLOSE BUTTONS ========================= */
+
+/* Top close X */
 .modal-close {
     position: absolute;
-
     top: 1rem;
     right: 1rem;
-
     width: 42px;
     height: 42px;
-
     border: none;
     border-radius: 50%;
-
     background: #0156a7;
     color: white;
-
     font-size: 1.4rem;
-
     cursor: pointer;
-
     z-index: 2;
 }
 
@@ -809,24 +842,16 @@ body.modal-open {
     color: #000000;
 }
 
-
 /* Bottom close button */
-
 .close-post {
     display: block;
-
     margin: 0 auto 2rem;
-
     padding: 0.7rem 1.5rem;
-
     background: #0156a7;
     color: white;
-
     border: none;
     border-radius: 5px;
-
     cursor: pointer;
-
     font-size: 1rem;
 }
 
@@ -836,31 +861,24 @@ body.modal-open {
 }
 
 
-/* Hidden post bodies */
-
-.hidden-post {
-    display: none;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
+/* ========================= TABLET ========================= */
 
 @media (max-width: 800px) {
 
     .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
 
+/* =========================  MOBILE ========================= */
 
 @media (max-width: 600px) {
 
     .blog-container {
         padding: 1.2rem;
     }
+
 
     .blog-grid {
         grid-template-columns: 1fr;
@@ -871,22 +889,180 @@ body.modal-open {
         aspect-ratio: 16 / 10;
     }
 
-    .blog-hover span {
-        font-size: 4rem;
+    /* Show book icon on mobile */
+
+    .blog-hover {
+        inset: auto 0 0 auto;
+
+        width: 54px;
+        height: 54px;
+
+        opacity: 1;
+
+        border-top-left-radius: 8px;
     }
+
+
+    .blog-read-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+
+    /* Modal */
 
     .blog-modal {
         padding: 0.5rem;
         align-items: flex-start;
     }
 
+
     .blog-modal-content {
         margin-top: 0.5rem;
         max-height: 96vh;
     }
 
+
     .modal-body {
         padding: 1.2rem;
+    }
+
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .blog-card,
+    .blog-hover,
+    .blog-read-icon,
+    .blog-modal {
+        transition: none;
+    }
+
+}
+
+/* =========================  BLOG CARD EXCERPT ========================= */
+
+.blog-card {
+    position: relative;
+}
+
+.blog-card-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666;
+    margin-top: 0.6rem;
+    margin-bottom: 0;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* Read More link */
+
+.blog-read-more {
+    color: #0156A7;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 3px;
+}
+
+.blog-read-more:hover {
+    color: #ff9E4A;
+    text-decoration: underline;
+}
+
+
+/* =========================
+   SHARE BUTTONS
+========================= */
+
+.blog-share-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #ddd;
+    border-radius: 50%;
+
+    background: #fff;
+    color: #0156A7;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.blog-share-button:hover {
+    background: #0156A7;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.blog-share-button:focus-visible {
+    outline: 3px solid #ff9E4A;
+    outline-offset: 3px;
+}
+
+
+/* Share icon on blog card */
+
+.blog-card-share {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+}
+
+/* =========================   MODAL TITLE AND SHARE ========================= */
+
+.modal-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modal-title-row h2 {
+    flex: 1;
+    margin: 0;
+}
+
+.modal-share-button {
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   RESPONSIVE ADJUSTMENTS
+========================= */
+
+@media (max-width: 600px) {
+
+    .blog-card-excerpt {
+        font-size: 0.88rem;
+    }
+
+    .blog-share-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .modal-title-row {
+        align-items: flex-start;
     }
 
 }

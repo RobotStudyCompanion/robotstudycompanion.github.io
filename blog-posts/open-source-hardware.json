@@ -1,0 +1,11 @@
+{
+    "id": "open-source-hardware",
+    "title": "Open Source Hardware",
+    "date": "2024",
+    "image": "blog-posts/oshwa.jpg",
+    "alt": "RSC Open Source Hardware",
+    "excerpt": "The Robot Study Companion is developed as an open-source hardware platform, allowing students and researchers to inspect, modify and build upon the system.",
+    "content": [
+        "The Robot Study Companion is developed as an open-source hardware platform, allowing students and researchers to inspect, modify and build upon the system."
+    ]
+}

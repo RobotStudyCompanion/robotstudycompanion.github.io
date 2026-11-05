@@ -1,0 +1,13 @@
+
+{
+    "id": "summer-school",
+    "title": "RSC Summer School",
+    "date": "July 2026",
+    "image": "blog-posts/summer-school.jpg",
+    "alt": "RSC Summer School",
+    "excerpt": "The RSC Summer School introduces students to human-robot interaction and social robotics through hands-on design, programming and prototyping.",
+    "content": [
+        "The RSC Summer School introduces students to human-robot interaction and social robotics through hands-on design, programming and prototyping.",
+        "Students work in multidisciplinary groups to develop robotic applications addressing real-world challenges."
+    ]
+}

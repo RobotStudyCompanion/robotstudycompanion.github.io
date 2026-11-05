@@ -1,0 +1,13 @@
+
+{
+    "id": "rsc-v4",
+    "title": "Building the RSC v4",
+    "date": "2025",
+    "image": "blog-posts/rsc-v4.jpg",
+    "alt": "Building RSC v4",
+    "excerpt": "RSC v4 brings together lessons learned from previous prototypes, with a focus on affordability, repairability and open hardware.",
+    "content": [
+        "RSC v4 brings together lessons learned from previous prototypes with a focus on affordability, repairability and open hardware.",
+        "The build documentation is available through the RSC Docs page."
+    ]
+}
